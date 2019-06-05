@@ -43,10 +43,10 @@
       <div class="tab-pane fade" id="注册" role="tabpanel" aria-labelledby="注册-tab">
         <div class="tab-pane fade show active" id="登录" role="tabpanel" aria-labelledby="登录-tab">
           <!-- Placeholder input -->
-          <label for="username">用户名</label>
-          <input type="text" id="username" class="form-control">
-          <label for="passwd">密码</label>
-          <input type="password" id="passwd" class="form-control">
+          <label for="usernamer">用户名</label>
+          <input type="text" id="usernamer" class="form-control">
+          <label for="passwdr">密码</label>
+          <input type="password" id="passwdr" class="form-control">
           <button type="button" class="btn btn-primary m-2">
             注册
           </button>
@@ -56,7 +56,7 @@
   </div>
 
   <!-- 加载 -->
-  <div class="d-none" style="background:rgba(0, 0, 0, 0.50); color:#FFF; height: 400px;width: 300px;margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
+  <div id="loading" class="d-none" style="background:rgba(0, 0, 0, 0.50); color:#FFF; height: 400px;width: 300px;margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
     <center>
       <div class="align-middle progress-cover progress-cover-primary">
         <div class="progress progress-medium fluent-position">
@@ -158,6 +158,7 @@
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript" src="js/gateway.js"></script>
 </body>
 
 </html>
