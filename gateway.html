@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>文献管理助手-登录</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fluent Design Bootstrap -->
+  <link rel="stylesheet" href="./css/fluent.css">
+  <!-- Micon icons-->
+  <link rel="stylesheet" href="./css/micon.min.css">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div style="height: 400px;width: 300px;margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
+    <ul class="nav nav-tabs fluent-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="登录-tab" data-toggle="tab" href="#登录" role="tab" aria-controls="登录" aria-selected="true">登录</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="注册-tab" data-toggle="tab" href="#注册" role="tab" aria-controls="注册" aria-selected="false">注册</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="登录" role="tabpanel" aria-labelledby="登录-tab">
+        <!-- Placeholder input -->
+        <label for="username">用户名</label>
+        <input type="text" id="username" class="form-control">
+        <label for="passwd">密码</label>
+        <input type="password" id="passwd" class="form-control">
+        <button type="button" class="btn btn-primary m-2">
+          登录
+        </button>
+      </div>
+      <div class="tab-pane fade" id="注册" role="tabpanel" aria-labelledby="注册-tab">
+        <div class="tab-pane fade show active" id="登录" role="tabpanel" aria-labelledby="登录-tab">
+          <!-- Placeholder input -->
+          <label for="username">用户名</label>
+          <input type="text" id="username" class="form-control">
+          <label for="passwd">密码</label>
+          <input type="password" id="passwd" class="form-control">
+          <button type="button" class="btn btn-primary m-2">
+            注册
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 加载 -->
+  <div class="d-none" style="background:rgba(0, 0, 0, 0.50); color:#FFF; height: 400px;width: 300px;margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
+    <center>
+      <div class="align-middle progress-cover progress-cover-primary">
+        <div class="progress progress-medium fluent-position">
+          <span class="progress-span"></span>
+          <span class="progress-span"></span>
+          <span class="progress-span"></span>
+          <span class="progress-span"></span>
+          <span class="progress-span"></span>
+        </div>
+      </div>
+    </center>
+  </div>
+
+  <!-- modals -->
+  <div class="modal fade" id="longinfailmod" tabindex="-1" role="dialog" aria-labelledby="longinfailmodLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="longinfailmodLabel">信息</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          登录未成功，请稍后再试。
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="pr-3">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#longinfailmod">
+      测试登录失败
+    </button>
+  </div>
+
+  <div class="modal fade" id="registerokmod" tabindex="-1" role="dialog" aria-labelledby="registerokmodLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerokmodLabel">注册成功</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          点击“确定”立即登录。
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="pr-3">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerokmod">
+      测试注册成功
+    </button>
+  </div>
+
+  <div class="modal fade" id="longinfailmod" tabindex="-1" role="dialog" aria-labelledby="longinfailmodLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="longinfailmodLabel">网络问题</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          请稍后再试。
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="pr-3">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#longinfailmod">
+      测试网络问题
+    </button>
+  </div>
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>
