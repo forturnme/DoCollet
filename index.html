@@ -142,7 +142,7 @@
             </thead>
             <tbody>
               <tr>
-                <td><div style="width:20px;height:20px;border-radius:50%;background-color:red;"></div></td>
+                <td onclick="changeMark(this);"><div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:red;"></div></td>
                 <td>Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon</td>
                 <td>System Architect</td>
                 <td>Denver</td>
@@ -319,6 +319,45 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
           <button type="button" class="btn btn-primary">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 详情 -->
+  <div class="modal fade" id="markModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">更换颜色标记</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div style="width: 32px;height:32px;">
+              <div style="width:20px;height:20px;border-radius:50%;background-color:red;"></div>
+            </div>
+            <div style="width: 32px;height:32px;">
+              <div style="width:20px;height:20px;border-radius:50%;background-color:yellow;"></div>
+            </div>
+            <div style="width: 32px;height:32px;">
+              <div style="width:20px;height:20px;border-radius:50%;background-color:blue;"></div>
+            </div>
+            <div style="width: 32px;height:32px;">
+              <div style="width:20px;height:20px;border-radius:50%;background-color:blueviolet;"></div>
+            </div>
+            <div style="width: 32px;height:32px;">
+              <div style="width:20px;height:20px;border-radius:50%;background-color:orange;"></div>
+            </div>
+            <div style="width: 32px;height:32px;">
+              <div style="width:20px;height:20px;border-radius:50%;background-color:teal;"></div>
+            </div>
+            <div style="width: 32px;height:32px;">
+              <div style="width:20px;height:20px;border-radius:50%;background-color:lime;"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

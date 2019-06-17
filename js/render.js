@@ -2,11 +2,16 @@ let mainDiv = $('#main');
 let libList = $('#libs');
 let docList = $('#docs');
 
+function tooltipInit () {
+    $('[data-toggle="tooltip"]').tooltip()
+}
+
 function maintaince () {
     let mheight = mainDiv.innerHeight();
     libList.height(mheight);
     docList.height(mheight);
     docList.width(mainDiv.innerWidth()-libList.outerWidth()-8);
+    tooltipInit();
 }
 
 $(maintaince);
@@ -48,9 +53,23 @@ function showinfo(td) {
     $('#infoModal').modal('show');
 }
 
+function changeMark(td) {
+    $('#markModal').modal('show');
+}
+
 function down(td) {
     console.log($(td).parent().parent().html());
     alert('锐意开发中');
+}
+
+function border(div) {
+    // 鼠标移到色标上时描绘边框
+    $(div).css({'border':'2px solid'});
+}
+
+function deborder(div) {
+    // 鼠标移出色标时取消描绘边框
+    $(div).css({'border':'none'});
 }
 
 function renderLibTable(larray) {
