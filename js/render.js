@@ -2,6 +2,45 @@ let mainDiv = $('#main');
 let libList = $('#libs');
 let docList = $('#docs');
 
++ function($) {
+    'use strict';
+
+    // UPLOAD CLASS DEFINITION
+    // ======================
+
+    var dropZone = document.getElementById('drop-zone');
+    var uploadForm = document.getElementById('js-upload-form');
+
+    var startUpload = function(files) {
+        console.log(files)
+    }
+
+    uploadForm.addEventListener('submit', function(e) {
+        var uploadFiles = document.getElementById('js-upload-files').files;
+        e.preventDefault()
+
+        startUpload(uploadFiles)
+    })
+
+    dropZone.ondrop = function(e) {
+        e.preventDefault();
+        this.className = 'upload-drop-zone';
+
+        startUpload(e.dataTransfer.files)
+    }
+
+    dropZone.ondragover = function() {
+        this.className = 'upload-drop-zone drop';
+        return false;
+    }
+
+    dropZone.ondragleave = function() {
+        this.className = 'upload-drop-zone';
+        return false;
+    }
+
+}(jQuery);
+
 function tooltipInit () {
     $('[data-toggle="tooltip"]').tooltip()
 }
@@ -49,11 +88,12 @@ $(()=>{
 });
 
 function showinfo(td) {
-    console.log($(td).parent().parent().html());
+    $('#infoModal').attr('did', $(td).parent().attr('did'));
     $('#infoModal').modal('show');
 }
 
 function changeMark(td) {
+    $('#markModal').attr('did', $(td).parent().attr('did'));
     $('#markModal').modal('show');
 }
 
