@@ -12,7 +12,28 @@ let docList = $('#docs');
     var uploadForm = document.getElementById('js-upload-form');
 
     var startUpload = function(files) {
-        console.log(files)
+        var upload = new FormData();
+        upload.append('data',files[0]);
+        console.log(upload);
+        $.ajax({
+            type: "post",
+            url: "http://39.108.137.227/upload",
+            cache: false,//上传文件不需要缓存
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            data: upload,
+            // dataType: "file",
+            success: function (response) {
+                console.log(response);
+                $('#lupload').hide();
+                $('#ltable').show();
+            },
+            error: function (err, res) {
+                console.log(res);
+                $('#lupload').hide();
+                $('#ltable').show();
+            }
+        });
     }
 
     uploadForm.addEventListener('submit', function(e) {
@@ -125,9 +146,32 @@ function changeMark(td) {
     markModal.modal('show');
 }
 
+function saveNote() {
+    $.ajax({
+        type: "post",
+        url: "http://39.108.137.227/savenote",
+        data: {document_id:"5d08ea3da444cde42d4e6d66", note_content:"Hey There\n"},
+        success: function (response) {
+            console.log(response);
+        }
+    });
+}
+
+function getNote() {
+    $.ajax({
+        type: "post",
+        url: "http://39.108.137.227/getnote",
+        data: {document_id:"5d08ea3da444cde42d4e6d66"},
+        success: function (response) {
+            console.log(response);
+        }
+    });
+}
+
 function down(button) {
     let did = $(button).parent().parent().parent().attr('did');
     // window.open('document-download-list'+did);
+    window.open('http://39.108.137.227/getdoc/5d08ea3da444cde42d4e6d66');
     alert('锐意开发中');
 }
 
