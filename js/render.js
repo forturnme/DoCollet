@@ -104,12 +104,25 @@ function down(td) {
 
 function border(div) {
     // 鼠标移到色标上时描绘边框
-    $(div).css({'border':'2px solid'});
+    $(div).css({'border':'2px solid gray'});
 }
 
 function deborder(div) {
     // 鼠标移出色标时取消描绘边框
     $(div).css({'border':'none'});
+}
+
+function showLUpload(ltable) {
+    // 文件拖入时隐藏列表显示上传
+    $('lupload').attr('lid', $(ltable).attr('lid'));
+    $(ltable).hide();
+    $('lupload').show();
+}
+
+function hideLUpload(lupload) {
+    // 文件没拖入时隐藏上传显示列表
+    $(lupload).hide();
+    $('ltable').show();
 }
 
 function renderLibTable(larray) {

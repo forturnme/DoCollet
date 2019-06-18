@@ -6,11 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>文献管理助手</title>
-  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./css/fluent.css">
-  <link href="css/mdb.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet"> -->
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -46,6 +41,14 @@
     <div class="row m-0">
       <div class="pl-1 pr-1 pt-0 pb-0 col-xl-2 col-lg-3 col-md-4 col-5">
         <ul id="libs" class="list-group scrollbar-primary" style="overflow-y:auto;">
+          <div class="row d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-primary waves-effect px-4 py-2" data-toggle="tooltip" title="创建分类">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary waves-effect px-4 py-2" data-toggle="tooltip" title="移除分类">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             Cras justo odio
             <span class="badge badge-primary badge-pill">14</span>
@@ -121,7 +124,7 @@
         </ul>
       </div>
   
-      <div>
+      <div id="ltable" lid="xxooxx00" ondragenter="showLUpload(this);">
         <ul id="docs" class="list-group scrollbar-primary" style="overflow:auto;">
           <table id="dtDynamicVerticalScrollExample" class="table table-striped table-sm table-hover" cellspacing="0" width="100%">
             <thead>
@@ -142,16 +145,20 @@
             </thead>
             <tbody>
               <tr>
-                <td onclick="changeMark(this);"><div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:red;"></div></td>
-                <td>Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon</td>
+                <td class="waves-effect" onclick="changeMark(this);"><div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:red;"></div></td>
+                <td class="waves-effect" data-toggle="tooltip" title="点击以阅读">Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon Tiger Nixon</td>
                 <td>System Architect</td>
                 <td>Denver</td>
                 <td>61</td>
-                <td><a onclick="showinfo(this);">
-                  <i class="fas fa-info"></i></a>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
                 </td>
-                <td><a onclick="down(this);">
-                  <i class="fas fa-arrow-down"></i></a>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -160,8 +167,16 @@
                 <td>Accountant</td>
                 <td>Tokyo</td>
                 <td>63</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:blue;"></div></td>
@@ -169,8 +184,16 @@
                 <td>Junior Technical Author</td>
                 <td>San Francisco</td>
                 <td>66</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:violet;"></div></td>
@@ -178,8 +201,16 @@
                 <td>Senior Javascript Developer</td>
                 <td>Edinburgh</td>
                 <td>22</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:orange;"></div></td>
@@ -187,8 +218,16 @@
                 <td>Accountant</td>
                 <td>Tokyo</td>
                 <td>33</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:teal;"></div></td>
@@ -196,8 +235,16 @@
                 <td>Integration Specialist</td>
                 <td>New York</td>
                 <td>61</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:lime;"></div></td>
@@ -205,8 +252,16 @@
                 <td>Sales Assistant</td>
                 <td>San Francisco</td>
                 <td>59</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:red;"></div></td>
@@ -214,8 +269,16 @@
                 <td>System Architect</td>
                 <td>Denver</td>
                 <td>61</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:yellow;"></div></td>
@@ -223,8 +286,16 @@
                 <td>Accountant</td>
                 <td>Tokyo</td>
                 <td>63</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:blue;"></div></td>
@@ -232,8 +303,16 @@
                 <td>Junior Technical Author</td>
                 <td>San Francisco</td>
                 <td>66</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:blueviolet;"></div></td>
@@ -241,8 +320,16 @@
                 <td>Senior Javascript Developer</td>
                 <td>Edinburgh</td>
                 <td>22</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:orange;"></div></td>
@@ -250,8 +337,16 @@
                 <td>Accountant</td>
                 <td>Tokyo</td>
                 <td>33</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:teal;"></div></td>
@@ -259,8 +354,16 @@
                 <td>Integration Specialist</td>
                 <td>New York</td>
                 <td>61</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td><div style="width:20px;height:20px;border-radius:50%;background-color:lime;"></div></td>
@@ -268,56 +371,67 @@
                 <td>Sales Assistant</td>
                 <td>San Francisco</td>
                 <td>59</td>
-                <td><i class="fas fa-info"></i></td>
-                <td><i class="fas fa-arrow-down"></i></td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
+                    <i class="fas fa-info"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
+          <!-- 空格区域，美化 -->
+          <div class="row"><br></div>
         </ul>
       </div>
-    </div>
-  </div>
 
-  <div class="container">
-      <div class="panel panel-default">
-        <div class="panel-heading"><strong>Upload Files</strong> <small>Bootstrap files upload</small></div>
-        <div class="panel-body">
-
-          <!-- Standar Form -->
-          <h4>Select files from your computer</h4>
-          <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-            <div class="form-inline">
-              <div class="form-group">
-                <input type="file" name="files[]" id="js-upload-files" multiple>
+      <!-- 上传区域 -->
+      <div class="container lupload" hidden>
+        <div class="panel panel-default">
+          <div class="panel-heading"><strong>Upload Files</strong> <small>Bootstrap files upload</small></div>
+          <div class="panel-body">
+  
+            <!-- Standar Form -->
+            <h4>Select files from your computer</h4>
+            <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+              <div class="form-inline">
+                <div class="form-group">
+                  <input type="file" name="files[]" id="js-upload-files" multiple>
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
               </div>
-              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+            </form>
+  
+            <!-- Drop Zone -->
+            <h4>Or drag and drop files below</h4>
+            <div class="upload-drop-zone" id="drop-zone">
+              Just drag and drop files here
             </div>
-          </form>
-
-          <!-- Drop Zone -->
-          <h4>Or drag and drop files below</h4>
-          <div class="upload-drop-zone" id="drop-zone">
-            Just drag and drop files here
-          </div>
-
-          <!-- Progress Bar -->
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-              <span class="sr-only">60% Complete</span>
+  
+            <!-- Progress Bar -->
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                <span class="sr-only">60% Complete</span>
+              </div>
             </div>
-          </div>
-
-          <!-- Upload Finished -->
-          <div class="js-upload-finished">
-            <h3>Processed files</h3>
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
-              <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
+  
+            <!-- Upload Finished -->
+            <div class="js-upload-finished">
+              <h3>Processed files</h3>
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
+                <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div> <!-- /container -->
+      </div> <!-- /container -->
+    </div>
+  </div>
 
   <!-- 详情 -->
   <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -365,7 +479,7 @@
     </div>
   </div>
 
-  <!-- 详情 -->
+  <!-- 变更色标 -->
   <div class="modal fade" id="markModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -377,26 +491,26 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div style="width: 32px;height:32px;">
-              <div style="width:20px;height:20px;border-radius:50%;background-color:red;"></div>
+            <div class="waves-effect" style="width: 20px;height:20px; margin: 10px;">
+              <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:red;"></div>
             </div>
-            <div style="width: 32px;height:32px;">
-              <div style="width:20px;height:20px;border-radius:50%;background-color:yellow;"></div>
+            <div class="waves-effect" style="width: 20px;height:20px; margin: 10px;">
+              <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:yellow;"></div>
             </div>
-            <div style="width: 32px;height:32px;">
-              <div style="width:20px;height:20px;border-radius:50%;background-color:blue;"></div>
+            <div class="waves-effect" style="width: 20px;height:20px; margin: 10px;">
+              <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:blue;"></div>
             </div>
-            <div style="width: 32px;height:32px;">
-              <div style="width:20px;height:20px;border-radius:50%;background-color:blueviolet;"></div>
+            <div class="waves-effect" style="width: 20px;height:20px; margin: 10px;">
+              <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:blueviolet;"></div>
             </div>
-            <div style="width: 32px;height:32px;">
-              <div style="width:20px;height:20px;border-radius:50%;background-color:orange;"></div>
+            <div class="waves-effect" style="width: 20px;height:20px; margin: 10px;">
+              <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:orange;"></div>
             </div>
-            <div style="width: 32px;height:32px;">
-              <div style="width:20px;height:20px;border-radius:50%;background-color:teal;"></div>
+            <div class="waves-effect" style="width: 20px;height:20px; margin: 10px;">
+              <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:teal;"></div>
             </div>
-            <div style="width: 32px;height:32px;">
-              <div style="width:20px;height:20px;border-radius:50%;background-color:lime;"></div>
+            <div class="waves-effect" style="width: 20px;height:20px; margin: 10px;">
+              <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:lime;"></div>
             </div>
           </div>
         </div>
