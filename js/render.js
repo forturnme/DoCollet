@@ -41,6 +41,30 @@ let docList = $('#docs');
 
 }(jQuery);
 
+function border(div) {
+    // 鼠标移到色标上时描绘边框
+    $(div).css({'border':'2px solid gray'});
+}
+
+function deborder(div) {
+    // 鼠标移出色标时取消描绘边框
+    $(div).css({'border':'none'});
+}
+
+function showLUpload(ltable) {
+    // 文件拖入时隐藏列表显示上传
+    let lupload = $('#lupload');
+    lupload.attr('lid', $(ltable).attr('lid'));
+    $(ltable).hide();
+    lupload.show();
+}
+
+function hideLUpload(lupload) {
+    // 文件没拖入时隐藏上传显示列表
+    $(lupload).hide();
+    $('#ltable').show();
+}
+
 function tooltipInit () {
     $('[data-toggle="tooltip"]').tooltip()
 }
@@ -52,6 +76,8 @@ function maintaince () {
     docList.width(mainDiv.innerWidth()-libList.outerWidth()-8);
     tooltipInit();
 }
+
+$(()=>{$('#lupload').hide();});
 
 $(maintaince);
 
@@ -87,42 +113,43 @@ $(()=>{
     $('.dataTables_length').addClass('bs-select');
 });
 
-function showinfo(td) {
-    $('#infoModal').attr('did', $(td).parent().attr('did'));
-    $('#infoModal').modal('show');
+function showinfo(button) {
+    let infoModal = $('#infoModal');
+    infoModal.attr('did', $(button).parent().parent().parent().attr('did'));
+    infoModal.modal('show');
 }
 
 function changeMark(td) {
-    $('#markModal').attr('did', $(td).parent().attr('did'));
-    $('#markModal').modal('show');
+    let markModal = $('#markModal');
+    markModal.attr('did', $(td).parent().attr('did'));
+    markModal.modal('show');
 }
 
-function down(td) {
-    console.log($(td).parent().parent().html());
+function down(button) {
+    let did = $(button).parent().parent().parent().attr('did');
+    // window.open('document-download-list'+did);
     alert('锐意开发中');
 }
 
-function border(div) {
-    // 鼠标移到色标上时描绘边框
-    $(div).css({'border':'2px solid gray'});
+function remFromLib(button) {
+    // 从分类中移除一篇文献
+    let did = $(button).parent().parent().parent().attr('did');
+    alert('锐意开发中');
 }
 
-function deborder(div) {
-    // 鼠标移出色标时取消描绘边框
-    $(div).css({'border':'none'});
+function delDoc(delBtn){
+    // 彻底删除文献
+    let warnModal = $('#warnRemDocModal');
+    warnModal.attr('did', $(delBtn).parent().parent().parent().parent().attr('did'));
+    warnModal.modal('show');
 }
 
-function showLUpload(ltable) {
-    // 文件拖入时隐藏列表显示上传
-    $('lupload').attr('lid', $(ltable).attr('lid'));
-    $(ltable).hide();
-    $('lupload').show();
-}
-
-function hideLUpload(lupload) {
-    // 文件没拖入时隐藏上传显示列表
-    $(lupload).hide();
-    $('ltable').show();
+function delDocConfirmed(btn) {
+    // 处理删除文献
+    let did = $(btn).parent().parent().parent().parent().attr('did');
+    $('#warnRemDocModal').modal('hide');
+    $('#infoModal').modal('hide');
+    alert('锐意开发中');
 }
 
 function renderLibTable(larray) {

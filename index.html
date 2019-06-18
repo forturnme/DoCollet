@@ -45,7 +45,7 @@
             <button type="button" class="btn btn-outline-primary waves-effect px-4 py-2" data-toggle="tooltip" title="创建分类">
               <i class="fas fa-plus"></i>
             </button>
-            <button type="button" class="btn btn-outline-primary waves-effect px-4 py-2" data-toggle="tooltip" title="移除分类">
+            <button type="button" class="btn btn-outline-secondary waves-effect px-4 py-2" data-toggle="tooltip" title="移除分类">
               <i class="far fa-trash-alt"></i>
             </button>
           </div>
@@ -124,7 +124,7 @@
         </ul>
       </div>
   
-      <div id="ltable" lid="xxooxx00" ondragenter="showLUpload(this);">
+      <div id="ltable" lid="xxooxx00" ondragover="showLUpload(this);">
         <ul id="docs" class="list-group scrollbar-primary" style="overflow:auto;">
           <table id="dtDynamicVerticalScrollExample" class="table table-striped table-sm table-hover" cellspacing="0" width="100%">
             <thead>
@@ -139,8 +139,8 @@
                 </th>
                 <th class="th-sm">年份
                 </th>
-                <th class="th-sm">详情</th>
-                <th class="th-sm">下载</th>
+                <th class="th-sm">操作
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -151,14 +151,20 @@
                 <td>Denver</td>
                 <td>61</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="remFromLib(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -168,14 +174,20 @@
                 <td>Tokyo</td>
                 <td>63</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -185,14 +197,20 @@
                 <td>San Francisco</td>
                 <td>66</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -202,14 +220,20 @@
                 <td>Edinburgh</td>
                 <td>22</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -219,14 +243,20 @@
                 <td>Tokyo</td>
                 <td>33</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -236,14 +266,20 @@
                 <td>New York</td>
                 <td>61</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -253,14 +289,20 @@
                 <td>San Francisco</td>
                 <td>59</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -270,14 +312,20 @@
                 <td>Denver</td>
                 <td>61</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -287,14 +335,20 @@
                 <td>Tokyo</td>
                 <td>63</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -304,14 +358,20 @@
                 <td>San Francisco</td>
                 <td>66</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -321,14 +381,20 @@
                 <td>Edinburgh</td>
                 <td>22</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -338,14 +404,20 @@
                 <td>Tokyo</td>
                 <td>33</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -355,14 +427,20 @@
                 <td>New York</td>
                 <td>61</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -372,14 +450,20 @@
                 <td>San Francisco</td>
                 <td>59</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="showinfo(this);">
-                    <i class="fas fa-info"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-outline-primary waves-effect px-1 py-1" onclick="down(this);">
-                    <i class="fas fa-arrow-down"></i>
-                  </button>
+                  <div class="row m-0 p-0">
+                    <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
+                      data-toggle="tooltip" title="信息">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="下载">
+                      <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
+                      data-toggle="tooltip" title="从分类中移除">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -390,7 +474,7 @@
       </div>
 
       <!-- 上传区域 -->
-      <div class="container lupload" hidden>
+      <div id="lupload" class="container" ondragleave="hideLUpload(this);">
         <div class="panel panel-default">
           <div class="panel-heading"><strong>Upload Files</strong> <small>Bootstrap files upload</small></div>
           <div class="panel-body">
@@ -472,8 +556,31 @@
           <div><a href="http://www.12377.cn/">http://www.something.com/something?so=mething</a></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-          <button type="button" class="btn btn-primary">保存</button>
+          <button type="button" class="btn btn-danger waves-effect mr-auto" onclick="delDoc(this);">删除</button>
+          <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-primary waves-effect">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 删除文献的警告 -->
+  <div class="modal fade" id="warnRemDocModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">删除文献</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>文献将从云存储中彻底移除。</div>
+          <div>确定要删除这篇文献吗？</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="delDocConfirmed(this);">确定</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
         </div>
       </div>
     </div>
@@ -520,6 +627,7 @@
 
   <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
   <script src="DataTable/datatables.js"></script>
+  <script src="js/dumbdata.js"></script><!--debug-->
   <script src="js/render.js"></script>
   <script src="js/classes.js"></script>
   <script type="text/javascript" src="js/popper.min.js"></script>
