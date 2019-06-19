@@ -20,7 +20,7 @@
 </head>
 
 <body>
-  <nav class="mb-1 navbar navbar-expand-lg navbar-dark bluegrey fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bluegrey fixed-top">
     <a class="navbar-brand" href="#">文献管理助手</a>
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item avatar dropdown">
@@ -45,14 +45,18 @@
             <button type="button" class="btn btn-outline-primary waves-effect px-4 py-2" data-toggle="tooltip" title="创建分类" onclick="$('#newLibModal').modal('show');">
               <i class="fas fa-plus"></i>
             </button>
-            <button type="button" class="btn btn-outline-secondary waves-effect px-4 py-2" data-toggle="tooltip" title="移除分类">
+            <button type="button" class="btn btn-outline-secondary waves-effect px-4 py-2" data-toggle="tooltip" title="移除分类" onclick="showDelLibBtn(this);">
               <i class="far fa-trash-alt"></i>
             </button>
           </div>
-          <ul class="px-1 scrollbar-primary" style="overflow-y:auto;">
-          <li class="list-group-item d-flex justify-content-between align-items-center" lid="1234452355" ondragover="allowDrop(this, event)" ondragleave="docOut(this);" ondrop="receiveDoc(this, event);">
+          <ul id="libList" class="px-1 scrollbar-primary" style="overflow-y:auto;">
+            <li class="list-group-item d-flex justify-content-between align-items-center" lid="1234452355" ondragover="allowDrop(this, event)" ondragleave="docOut(this);" ondrop="receiveDoc(this, event);">
               Cras justo odio
               <span class="badge badge-primary badge-pill">14</span>
+              <button type="button" class="btn btn-outline-danger waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="delLib(this);"
+                data-toggle="tooltip" title="移除此分类" style="display: none;">
+                <i class="fas fa-trash"></i>
+              </button>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               Dapibus ac facilisis in

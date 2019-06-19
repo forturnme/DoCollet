@@ -86,8 +86,8 @@ function showLUpload(ltable, event) {
     lupload.show();
 }
 
-// TODO: 加上创建分类的对话框
-// TODO: 加上删除分类时要显示的按钮
+// TODO: 加上创建分类的对话框 (ok)
+// TODO: 加上删除分类时要显示的按钮 (ok)
 // TODO: 加上上传文件失败时付费的提示
 // TODO: 加上删除分类时的确认、从分类移除文献的确认、退出登录的确认
 // TODO: 在详情页面加上一点击对应的元素就变为文本框编辑
@@ -225,6 +225,28 @@ function remFromLib(button) {
     // 从分类中移除一篇文献
     let did = $(button).parent().parent().parent().attr('did');
     adev();
+}
+
+function showDelLibBtn (btn) {
+    // 显示删除分类的按钮
+    $('#libList').children('li').children('button').show();
+    $(btn).removeClass('btn-outline-secondary');
+    $(btn).addClass('btn-danger');
+    $(btn).attr('onclick','hideDelLibBtn(this);');
+}
+
+function hideDelLibBtn (btn) {
+    // 隐藏删除分类的按钮
+    $('#libList').children('li').children('button').hide();
+    $(btn).removeClass('btn-danger');
+    $(btn).addClass('btn-outline-secondary');
+    $(btn).attr('onclick','showDelLibBtn(this);');
+}
+
+function delLib (btn) {
+    // 移除一个分类
+    let lid = $(btn).parent().attr('lid');
+    console.log(lid);
 }
 
 function delDoc(delBtn){
