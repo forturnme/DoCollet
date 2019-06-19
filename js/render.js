@@ -94,6 +94,7 @@ function showLUpload(ltable, event) {
 // TODO: 在详情页面加上一点击对应的元素就变为文本框编辑
 // TODO: 添加local storage传递用户名、文件查看id、文件标题的信息
 // TODO: 完善MD编辑器，加上保存笔记的按钮
+// TODO: ajax、模板渲染
 
 function hideLUpload(lupload) {
     // 文件没拖入时隐藏上传显示列表
