@@ -5,6 +5,8 @@ let docList = $('#docs');
 var dragImg = new Image(); 
 dragImg.src = './img/file.jpg'; 
 
+let adev =()=>alert('锐意开发中');
+
 + function($) {
     'use strict';
 
@@ -183,10 +185,9 @@ function docOut (li) {
 
 function receiveDoc (li, event) {
     // 文献被拖到新的分类
-    console.log(li);
     let lid = $(li).attr('lid');
     var did = event.dataTransfer.getData("Text");
-    console.log(event);
+    docOut(li);
     console.log(lid);
     console.log(did);
 }
@@ -217,13 +218,13 @@ function down(button) {
     let did = $(button).parent().parent().parent().attr('did');
     // window.open('document-download-list'+did);
     window.open('http://39.108.137.227/getdoc/5d08ea3da444cde42d4e6d66');
-    alert('锐意开发中');
+    adev();
 }
 
 function remFromLib(button) {
     // 从分类中移除一篇文献
     let did = $(button).parent().parent().parent().attr('did');
-    alert('锐意开发中');
+    adev();
 }
 
 function delDoc(delBtn){
@@ -238,7 +239,7 @@ function delDocConfirmed(btn) {
     let did = $(btn).parent().parent().parent().parent().attr('did');
     $('#warnRemDocModal').modal('hide');
     $('#infoModal').modal('hide');
-    alert('锐意开发中');
+    adev();
 }
 
 function renderLibTable(larray) {

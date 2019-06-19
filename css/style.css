@@ -37,9 +37,8 @@ table.dataTable thead .sorting_desc_disabled:before {
     bottom: .5em;
 }
 .upload-drop-zone {
-    height: 98%;
+    height: 100%;
     border-width: 2px;
-    margin-bottom: 20px;
 }
   
   /* skin.css Style*/
