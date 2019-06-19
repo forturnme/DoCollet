@@ -89,7 +89,8 @@ function showLUpload(ltable, event) {
 // TODO: 加上创建分类的对话框 (ok)
 // TODO: 加上删除分类时要显示的按钮 (ok)
 // TODO: 加上上传文件失败时付费的提示
-// TODO: 加上删除分类时的确认、从分类移除文献的确认、退出登录的确认
+// TODO: 加上删除分类时的确认 (ok)
+// TODO: 加上从分类移除文献的确认、退出登录的确认
 // TODO: 在详情页面加上一点击对应的元素就变为文本框编辑
 // TODO: 添加local storage传递用户名、文件查看id、文件标题的信息
 // TODO: 完善MD编辑器，加上保存笔记的按钮
@@ -160,18 +161,31 @@ function changeMark(td) {
     markModal.modal('show');
 }
 
+function delLib (btn) {
+    // 删除library
+    let lid = $(btn).parent().attr('lid');
+    let m = $('#warnDelLibModal')
+    m.attr('lid',lid);
+    m.modal('show');
+    hideDelLibBtn('#showDelLibBtn');
+}
+
+function delLibConfirmed (btn) {
+    let lid = $(btn).parent().parent().parent().parent().attr('lid');
+    // 实际操作删除分类
+    adev();
+}
+
 function dragDoc(tr, event) {
     // 开始拖动文献
     event.dataTransfer.setData('Text',$(event.target).parent().attr('did'));
     event.dataTransfer.effectAllowed = 'copy';
     event.dataTransfer.setDragImage(dragImg, 64, 64);
     event.target.style.backgroundColor = 'cyan';
-    event.target.style.cursor = 'copy';
 }
 
 function dragDocOk (event) {
     event.target.style.backgroundColor = '';
-    event.target.style.cursor = 'default';
 }
 
 function allowDrop(li, event) {
@@ -241,12 +255,6 @@ function hideDelLibBtn (btn) {
     $(btn).removeClass('btn-danger');
     $(btn).addClass('btn-outline-secondary');
     $(btn).attr('onclick','showDelLibBtn(this);');
-}
-
-function delLib (btn) {
-    // 移除一个分类
-    let lid = $(btn).parent().attr('lid');
-    console.log(lid);
 }
 
 function delDoc(delBtn){

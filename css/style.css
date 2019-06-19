@@ -6,6 +6,11 @@
     right: 0px;
 }
 
+li.active{
+    background-color: rgb(222, 226, 230) !important;
+    color: #222 !important;
+}
+
 .scrollbar-primary::-webkit-scrollbar {
     width: 4px;
     height: 4px;

@@ -45,12 +45,12 @@
             <button type="button" class="btn btn-outline-primary waves-effect px-4 py-2" data-toggle="tooltip" title="创建分类" onclick="$('#newLibModal').modal('show');">
               <i class="fas fa-plus"></i>
             </button>
-            <button type="button" class="btn btn-outline-secondary waves-effect px-4 py-2" data-toggle="tooltip" title="移除分类" onclick="showDelLibBtn(this);">
+            <button type="button" id="showDelLibBtn" class="btn btn-outline-secondary waves-effect px-4 py-2" data-toggle="tooltip" title="移除分类" onclick="showDelLibBtn(this);">
               <i class="far fa-trash-alt"></i>
             </button>
           </div>
           <ul id="libList" class="px-1 scrollbar-primary" style="overflow-y:auto;">
-            <li class="list-group-item d-flex justify-content-between align-items-center" lid="1234452355" ondragover="allowDrop(this, event)" ondragleave="docOut(this);" ondrop="receiveDoc(this, event);">
+            <li class="list-group-item d-flex justify-content-between align-items-center active" lid="1234452355" ondragover="allowDrop(this, event)" ondragleave="docOut(this);" ondrop="receiveDoc(this, event);">
               Cras justo odio
               <span class="badge badge-primary badge-pill">14</span>
               <button type="button" class="btn btn-outline-danger waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="delLib(this);"
@@ -61,6 +61,10 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
               Dapibus ac facilisis in
               <span class="badge badge-primary badge-pill">2</span>
+              <button type="button" class="btn btn-outline-danger waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="delLib(this);"
+                data-toggle="tooltip" title="移除此分类" style="display: none;">
+                <i class="fas fa-trash"></i>
+              </button>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               Morbi leo risus
@@ -545,11 +549,11 @@
   </div>
 
   <!-- 删除文献的警告 -->
-  <div class="modal fade" id="warnRemDocModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal fade" id="warnRemDocModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel2">删除文献</h5>
+          <h5 class="modal-title" id="exampleModalLabel4">删除文献</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -560,6 +564,28 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="delDocConfirmed(this);">确定</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 删除分类的警告 -->
+  <div class="modal fade" id="warnDelLibModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel3">移除分类</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>此分类将被移除，但其中的文献仍会保持在“全部文献”下。</div>
+          <div>确定要移除这个分类吗？</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="delLibConfirmed(this);">确定</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
         </div>
       </div>
