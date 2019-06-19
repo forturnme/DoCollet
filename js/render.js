@@ -2,6 +2,9 @@ let mainDiv = $('#main');
 let libList = $('#libs');
 let docList = $('#docs');
 
+var dragImg = new Image(); 
+dragImg.src = './img/file.jpg'; 
+
 + function($) {
     'use strict';
 
@@ -9,12 +12,11 @@ let docList = $('#docs');
     // ======================
 
     var dropZone = document.getElementById('drop-zone');
-    var uploadForm = document.getElementById('js-upload-form');
+    // var uploadForm = document.getElementById('js-upload-form');
 
     var startUpload = function(files) {
         var upload = new FormData();
         upload.append('data',files[0]);
-        console.log(upload);
         $.ajax({
             type: "post",
             url: "http://39.108.137.227/upload",
@@ -36,12 +38,12 @@ let docList = $('#docs');
         });
     }
 
-    uploadForm.addEventListener('submit', function(e) {
-        var uploadFiles = document.getElementById('js-upload-files').files;
-        e.preventDefault()
+    // uploadForm.addEventListener('submit', function(e) {
+    //     var uploadFiles = document.getElementById('js-upload-files').files;
+    //     e.preventDefault()
 
-        startUpload(uploadFiles)
-    })
+    //     startUpload(uploadFiles)
+    // })
 
     dropZone.ondrop = function(e) {
         e.preventDefault();
@@ -72,13 +74,22 @@ function deborder(div) {
     $(div).css({'border':'none'});
 }
 
-function showLUpload(ltable) {
+function showLUpload(ltable, event) {
     // 文件拖入时隐藏列表显示上传
+    console.log(event);
+    if(event.dataTransfer.effectAllowed == 'copy')return;
     let lupload = $('#lupload');
     lupload.attr('lid', $(ltable).attr('lid'));
     $(ltable).hide();
     lupload.show();
 }
+
+// TODO: 加上删除分类时要显示的按钮
+// TODO: 加上上传文件失败时付费的提示
+// TODO: 加上删除分类时的确认、从分类移除文献的确认、退出登录的确认
+// TODO: 在详情页面加上一点击对应的元素就变为文本框编辑
+// TODO: 添加local storage传递用户名、文件查看id、文件标题的信息
+// TODO: 完善MD编辑器，加上保存笔记的按钮
 
 function hideLUpload(lupload) {
     // 文件没拖入时隐藏上传显示列表
@@ -144,6 +155,39 @@ function changeMark(td) {
     let markModal = $('#markModal');
     markModal.attr('did', $(td).parent().attr('did'));
     markModal.modal('show');
+}
+
+function dragDoc(tr, event) {
+    // 开始拖动文献
+    event.dataTransfer.setData('Text',$(event.target).parent().attr('did'));
+    event.dataTransfer.effectAllowed = 'copy';
+    event.dataTransfer.setDragImage(dragImg, 64, 64);
+    event.target.style.backgroundColor = 'cyan';
+    event.target.style.cursor = 'copy';
+}
+
+function dragDocOk (event) {
+    event.target.style.backgroundColor = '';
+    event.target.style.cursor = 'default';
+}
+
+function allowDrop(li, event) {
+    $(li).css('border','2px solid');
+    event.preventDefault();
+}
+
+function docOut (li) {
+    $(li).css('border', '1px solid rgba(0,0,0,.125)');
+}
+
+function receiveDoc (li, event) {
+    // 文献被拖到新的分类
+    console.log(li);
+    let lid = $(li).attr('lid');
+    var did = event.dataTransfer.getData("Text");
+    console.log(event);
+    console.log(lid);
+    console.log(did);
 }
 
 function saveNote() {
