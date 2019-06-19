@@ -84,6 +84,7 @@ function showLUpload(ltable, event) {
     lupload.show();
 }
 
+// TODO: 加上创建分类的对话框
 // TODO: 加上删除分类时要显示的按钮
 // TODO: 加上上传文件失败时付费的提示
 // TODO: 加上删除分类时的确认、从分类移除文献的确认、退出登录的确认
