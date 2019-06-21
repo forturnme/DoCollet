@@ -33,22 +33,21 @@ function preLogin(u) {
     return ret;
 }
 
-function login(u, p) {
+function login(u, p, pu) {
+    let sf = function () {
+        sessionStorage.setItem('uname', pu);
+        window.location.href='./index.html';
+        return;
+    };
     $.ajax({
         type: "post",
         url: masterURL+'login2',
         data: JSON.stringify({'uname':u,'passwd':p}),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (r) {
-            window.location.href='./index.html';
-            return;
-        },
+        success: sf,
         error: function (err, res) {
-            if(err.status == 200){
-                window.location.href='./index.html';
-                return;
-            }
+            if(err.status == 200)sf();
             loading.addClass('d-none');
             $('#loginfailmod').modal('show');
             return;
@@ -87,6 +86,7 @@ function register(u, p) {
 $("#登录>button").click((e) => {
     loading.removeClass("d-none");
     var username = $("#username").val();
+    var plain_username = username;
     // username = md5(username);
     var s = preLogin(username);
     if(!s){
@@ -95,7 +95,7 @@ $("#登录>button").click((e) => {
     }
     var passwd = $("#passwd").val();
     passwd = md5(passwd+s);
-    login(username, passwd);
+    login(username, passwd, plain_username);
 });
 
 $("#注册>div>button").click((e) => {
