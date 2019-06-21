@@ -1,34 +1,120 @@
 // 预加载函数
 $();
 
+var masterURL = 'http://39.108.137.227/';
+
 let loading = $("#loading");
 
+function preLogin(u) {
+    var ret;
+    $.ajax({
+        type: "post",
+        async: false,
+        url: masterURL+'login1',
+        data: JSON.stringify({
+            'uname':u
+        }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            ret = response.id;
+        },
+        error: function (err, res) {
+            if(err.status == 403){
+                $('#usrnotexistmod').modal('show');
+                ret = null;
+            }
+            else{
+                $('#neterr').modal('show');
+                ret = null;
+            }
+        }
+    });
+    return ret;
+}
+
 function login(u, p) {
-    
+    $.ajax({
+        type: "post",
+        url: masterURL+'login2',
+        data: JSON.stringify({'uname':u,'passwd':p}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (r) {
+            window.location.href='./index.html';
+            return;
+        },
+        error: function (err, res) {
+            if(err.status == 200){
+                window.location.href='./index.html';
+                return;
+            }
+            loading.addClass('d-none');
+            $('#loginfailmod').modal('show');
+            return;
+        }
+    });
 }
 
 function register(u, p) {
-    
+    let sf = function () {
+        loading.addClass('d-none');
+        $('#registerokmod').modal('show');
+        return;
+    };
+    $.ajax({
+        type: "post",
+        url: masterURL+'register',
+        data: JSON.stringify({'uname':u,'passwd':p}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: sf,
+        error:function (err, res) {
+            if(err.status == 200)sf();
+            if(err.status == 403){
+                loading.addClass('d-none');
+                $('#usernameused').modal('show');
+                return;
+            }
+            else{
+                $('#neterr').modal('show');
+                return;
+            }
+        }
+    });
 }
 
 $("#登录>button").click((e) => {
-    e.preventDefault();
     loading.removeClass("d-none");
     var username = $("#username").val();
+    // username = md5(username);
+    var s = preLogin(username);
+    if(!s){
+        loading.addClass('d-none');
+        return;
+    }
     var passwd = $("#passwd").val();
+    passwd = md5(passwd+s);
     login(username, passwd);
 });
 
-$("#注册>button").click((e) => { 
-    e.preventDefault();
+$("#注册>div>button").click((e) => {
     loading.removeClass("d-none");
     var username = $("#usernamer").val();
     var passwd = $("#passwdr").val();
+    if(passwd.length < 9 || /[^0123456789]/.test(passwd)==false){
+        loading.addClass("d-none");
+        $('#badenter').modal('show');
+        return;
+    }
+    username = md5(username);
+    passwd = md5(passwd);
     register(username, passwd);
+    return;
 });
 
-// 测试用
-loading.click((e) => {
-    e.preventDefault();
-    loading.addClass("d-none");
-});
+// // 测试用
+// loading.click((e) => {
+//     e.preventDefault();
+//     loading.addClass("d-none");
+// });

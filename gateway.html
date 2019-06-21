@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="./css/micon.min.css">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
+  <!-- MD5 -->
+  <script src="http://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
 </head>
 
 <body>
@@ -41,7 +43,7 @@
         </button>
       </div>
       <div class="tab-pane fade" id="注册" role="tabpanel" aria-labelledby="注册-tab">
-        <div class="tab-pane fade show active" id="登录" role="tabpanel" aria-labelledby="登录-tab">
+        <div class="tab-pane fade show active" id="注册" role="tabpanel" aria-labelledby="注册-tab">
           <!-- Placeholder input -->
           <label for="usernamer">用户名</label>
           <input type="text" id="usernamer" class="form-control">
@@ -56,7 +58,7 @@
   </div>
 
   <!-- 加载 -->
-  <div id="loading" class="d-none" style="background:rgba(0, 0, 0, 0.50); color:#FFF; height: 400px;width: 300px;margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
+  <div id="loading" class="d-none" style="background:white; color:#FFF; height: 400px;width: 300px;margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
     <center>
       <div class="align-middle progress-cover progress-cover-primary">
         <div class="progress progress-medium fluent-position">
@@ -71,11 +73,11 @@
   </div>
 
   <!-- modals -->
-  <div class="modal fade" id="longinfailmod" tabindex="-1" role="dialog" aria-labelledby="longinfailmodLabel" aria-hidden="true">
+  <div class="modal fade" id="loginfailmod" tabindex="-1" role="dialog" aria-labelledby="loginfailmodLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="longinfailmodLabel">信息</h5>
+          <h5 class="modal-title" id="loginfailmodLabel">信息</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -89,13 +91,50 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="usrnotexistmod" tabindex="-1" role="dialog" aria-labelledby="usrnotexistmodLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="usrnotexistmodLabel">信息</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          用户名未找到，请先注册。
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="usernameused" tabindex="-1" role="dialog" aria-labelledby="usernameusedLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="usernameusedLabel">信息</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          此用户名已被注册。
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
   
-  <div class="pr-3">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#longinfailmod">
+  <!-- <div class="pr-3">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginfailmod">
       测试登录失败
     </button>
-  </div>
+  </div> -->
 
   <div class="modal fade" id="registerokmod" tabindex="-1" role="dialog" aria-labelledby="registerokmodLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
@@ -116,18 +155,17 @@
     </div>
   </div>
   
-  <div class="pr-3">
-    <!-- Button trigger modal -->
+  <!-- <div class="pr-3">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerokmod">
       测试注册成功
     </button>
-  </div>
+  </div> -->
 
-  <div class="modal fade" id="longinfailmod" tabindex="-1" role="dialog" aria-labelledby="longinfailmodLabel" aria-hidden="true">
+  <div class="modal fade" id="neterr" tabindex="-1" role="dialog" aria-labelledby="neterrLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="longinfailmodLabel">网络问题</h5>
+          <h5 class="modal-title" id="neterrLabel">网络问题</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -141,13 +179,35 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="badenter" tabindex="-1" role="dialog" aria-labelledby="badenterLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="badenterLabel">输入不符合要求</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          请检查以下要求：
+          <ul>
+            <li>密码不能短于9位。</li>
+            <li>密码不能全是数字。</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
   
-  <div class="pr-3">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#longinfailmod">
+  <!-- <div class="pr-3">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#neterr">
       测试网络问题
     </button>
-  </div>
+  </div> -->
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
