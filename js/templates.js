@@ -22,6 +22,46 @@ String.prototype.format = function(args) {
     return result;
 }
 
+var markColours = // 数字与颜色的对应关系
+{
+    '0':'lightgray',
+    '1':'red',
+    '2':'yellow',
+    '3':'blue',
+    '4':'blueviolet',
+    '5':'orange',
+    '6':'teal',
+    '7':'lime',
+}
+
+var dttLocale = // datatable的本地化
+{
+    language: {
+        "sProcessing": "处理中...",
+        "sLengthMenu": "每页显示 _MENU_ 篇文献",
+        "sZeroRecords": "没有匹配的文献。",
+        "sInfo": "显示第 _START_ 至 _END_ 篇文献，共 _TOTAL_ 项",
+        "sInfoEmpty": "没有文献可供显示。<br>您可以拖动文献至此来上传到此分类。<br>",
+        "sInfoFiltered": "(由 _MAX_ 篇文献过滤)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索:",
+        "sUrl": "",
+        "sEmptyTable": "没有文献可供显示。<br>您可以拖动文献至此来上传到此分类。<br>",
+        "sLoadingRecords": "载入中...",
+        "sInfoThousands": ",",
+        "oPaginate": {
+            "sFirst": "首页",
+            "sPrevious": "上页",
+            "sNext": "下页",
+            "sLast": "末页"
+        },
+        "oAria": {
+            "sSortAscending": ": 以升序排列此列",
+            "sSortDescending": ": 以降序排列此列"
+        }
+    }
+};
+
 var _Mlib = // 分类的DOM模板
 '<li class="waves-effect list-group-item d-flex \
     justify-content-between align-items-center" lid="{lib_id}" ltype="{type}" \
@@ -61,7 +101,7 @@ var _Mdoc = // 文章列表的DOM模板
     </div></td>\
     <td class="waves-effect" data-toggle="tooltip" title="点击以阅读" \
     ondragstart="dragDoc(this, event);" ondragend="dragDocOk(event);" \
-    draggable="true">{title}</td>\
+    draggable="true" style="min-width:400px;">{title}</td>\
     <td>{fst_author}</td>\
     <td>{source}</td>\
     <td>{year}</td>\
@@ -137,5 +177,34 @@ var dumbLibs = {
             'doc_count':'2',
             'type':'2'
         }
+    ]
+};
+
+var dumbDocs = // 测试文档渲染器的假数据
+{
+    docs:[{
+        'document_id':'12423rwffw34d3w2wcae',
+        'title':'New Approach to Get Things Fxxk Up',
+        'mark':'0',
+        'fst_author':'John Dean',
+        'source':'CADFFA',
+        'year':'2016'
+    },
+    {
+        'document_id':'afsfffwef8a39fuawh83hwe',
+        'title':'A Quama fsa ffawe fcs vzev ef',
+        'mark':'0',
+        'fst_author':'Jdfafe sdv',
+        'source':'ODJJ',
+        'year':'1999'
+    },
+    {
+        'document_id':'a23rwifj389fwfwfobvbnmdk',
+        'title':'Injko NJ iKN Mk Mo lMMMMMMllkko',
+        'mark':'4',
+        'fst_author':'Oad fasasq',
+        'source':'PIJPd',
+        'year':'2004'
+    }
     ]
 };

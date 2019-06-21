@@ -112,9 +112,3 @@ $("#注册>div>button").click((e) => {
     register(username, passwd);
     return;
 });
-
-// // 测试用
-// loading.click((e) => {
-//     e.preventDefault();
-//     loading.addClass("d-none");
-// });

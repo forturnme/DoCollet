@@ -1,15 +1,13 @@
 let mainDiv = $('#main');
 let libList = $('#libs');
 let docList = $('#docs');
+let docTable = $('#docTable');
+let libListArea = $('#libList');
 
 var dragImg = new Image(); 
 dragImg.src = './img/file.jpg'; 
 
 let adev =()=>alert('锐意开发中');
-
-$(function(){
-    renderLibTable(dumbLibs.libs);
-})
 
 + function($) {
     'use strict';
@@ -129,35 +127,28 @@ $(maintaince);
 
 $(window).resize(maintaince);
 
-$(()=>{
-    $('#dtDynamicVerticalScrollExample').DataTable({
-        language: {
-            "sProcessing": "处理中...",
-            "sLengthMenu": "每页显示 _MENU_ 篇文献",
-            "sZeroRecords": "没有匹配的文献。",
-            "sInfo": "显示第 _START_ 至 _END_ 篇文献，共 _TOTAL_ 项",
-            "sInfoEmpty": "没有文献可供显示。<br>您可以拖动文献至此来上传到此分类。<br>",
-            "sInfoFiltered": "(由 _MAX_ 篇文献过滤)",
-            "sInfoPostFix": "",
-            "sSearch": "搜索:",
-            "sUrl": "",
-            "sEmptyTable": "没有文献可供显示。<br>您可以拖动文献至此来上传到此分类。<br>",
-            "sLoadingRecords": "载入中...",
-            "sInfoThousands": ",",
-            "oPaginate": {
-                "sFirst": "首页",
-                "sPrevious": "上页",
-                "sNext": "下页",
-                "sLast": "末页"
-            },
-            "oAria": {
-                "sSortAscending": ": 以升序排列此列",
-                "sSortDescending": ": 以降序排列此列"
-            }
-        }
-    });
+$(function () {
+    $('#dtDynamicVerticalScrollExample').DataTable(dttLocale);
     $('.dataTables_length').addClass('bs-select');
 });
+
+$(function(){
+    renderLibTable(dumbLibs.libs);
+    renderDocumentTable(dumbDocs.docs);
+});
+
+function dataTableTrun () {
+    // 清空datatable
+    let dtt = $('#dtDynamicVerticalScrollExample').dataTable();
+    dtt.fnClearTable();
+    dtt.fnDestroy();
+}
+
+function dataTableInit () {
+    // 重新渲染datatable
+    $('#dtDynamicVerticalScrollExample').dataTable(dttLocale);
+    $('.dataTables_length').addClass('bs-select');
+}
 
 function addToReadLater(btn) {
     // 加到待读列表
@@ -166,7 +157,6 @@ function addToReadLater(btn) {
 
 function showDocsIn (li) {
     // 点击lib时，激活此li并显示lib内容到右侧
-    let libListArea = $('#libList');
     libListArea.children('li').removeClass('active');
     $(li).addClass('active');
     // FILL with ajax
@@ -297,7 +287,6 @@ function delDocConfirmed(btn) {
 
 function renderLibTable(larray) {
     // 把列表larray渲染到分类目录
-    let libListArea = $('#libList');
     libListArea.empty(); // 先清空dom
     var list = [];
     var all, rl; // 全部和待读
@@ -319,13 +308,18 @@ function renderLibTable(larray) {
     libListArea.append(all);
     libListArea.append(rl);
     libListArea.append(list);
+    tooltipInit();
 }
 
 function renderDocumentTable(darray) {
-    var list = '';
+    // 把文献列表渲染到docTable
+    docTable.empty();
+    dataTableTrun();
     for (let i = 0; i < darray.length; i++) {
-        const document = darray[i];
-        list += '<tr did="{0}"><td onclick="alert(this)">{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>'.format(document.document_id ,document.mark, document.title, document.fst_author, document.source, document.year);
+        const doc = darray[i];
+        doc.mark = markColours[doc.mark];
+        docTable.append($(_Mdoc.format(doc)));
     }
-    return list;
+    dataTableInit();
+    tooltipInit();
 }
