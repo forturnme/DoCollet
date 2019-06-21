@@ -513,29 +513,42 @@
         </div>
         <div class="modal-body">
           <h4>标题</h4>
-          <div>something</div>
+          <div class="waves-effect" onclick="editInfo(this)">something</div>
+          <input id="etitle" value="something" type="text" class="form-control" style="display: none">
           <h4>作者</h4>
-          <div>
+          <div class="waves-effect" onclick="editInfo(this)">
             <span class="badge badge-primary">John Titor</span>
             <span class="badge badge-primary">Bob Miller</span>
             <span class="badge badge-primary">S.Hawking</span>
           </div>
+          <input id="eauthors" value="John Titor,Bob Miller,S.Hawking" type="text" class="form-control" style="display: none">
           <h4>年份</h4>
-          <div>2020</div>
+          <div class="waves-effect" onclick="editInfo(this)">2020</div>
+          <input id="eyear" onkeydown="return false;" max="9999" min="1" value="2020" type="number" class="form-control" style="display: none">
           <h4>主题</h4>
-          <div>
+          <div class="waves-effect" onclick="editInfo(this)">
             <span class="badge badge-info">genre</span>
             <span class="badge badge-info">CV</span>
             <span class="badge badge-info">Bio Research</span>
           </div>
+          <input id="ethemes" value="genre,CV,Bio Research" type="text" class="form-control" style="display: none">
           <h4>来源</h4>
-          <div>CVPR</div>
+          <div class="waves-effect" onclick="editInfo(this)">CVPR</div>
+          <input id="esource" value="CVPR" type="text" class="form-control" style="display: none">
           <h4>评分</h4>
-          <div>
+          <div class="waves-effect" onclick="editInfo(this)">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
           </div>
+          <select id="escore" style="display: none">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
           <h4>归档号</h4>
-          <div><span class="badge badge-secondary">Doi</span>adas.1123424</div>
+          <div class="waves-effect" onclick="editInfo(this)"><span class="badge badge-secondary">Doi</span>adas.1123424</div>
+          <input id="eid" value="Doi adas.1123424" type="text" class="form-control" style="display: none">
           <h4>链接</h4>
           <div><a href="http://www.12377.cn/">http://www.something.com/something?so=mething</a></div>
         </div>

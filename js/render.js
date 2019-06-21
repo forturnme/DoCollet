@@ -26,7 +26,6 @@ let adev =()=>alert('锐意开发中');
             processData: false, // 告诉jQuery不要去处理发送的数据
             contentType: false, // 告诉jQuery不要去设置Content-Type请求头
             data: upload,
-            // dataType: "file",
             success: function (response) {
                 console.log(response);
                 $('#lupload').hide();
@@ -39,13 +38,6 @@ let adev =()=>alert('锐意开发中');
             }
         });
     }
-
-    // uploadForm.addEventListener('submit', function(e) {
-    //     var uploadFiles = document.getElementById('js-upload-files').files;
-    //     e.preventDefault()
-
-    //     startUpload(uploadFiles)
-    // })
 
     dropZone.ondrop = function(e) {
         e.preventDefault();
@@ -91,12 +83,19 @@ function showLUpload(ltable, event) {
 // TODO: 加上上传文件失败时付费的提示 (exceedLimitModal) (ok)
 // TODO: 加上删除分类时的确认 (ok)
 // TODO: 加上退出登录的确认和方法 (ok, and ajax to be added)
-// TODO: 在详情页面加上一点击对应的元素就变为文本框编辑  
-// TODO: 添加local storage传递用户名、文件查看id、文件标题的信息
-// TODO: 完善MD编辑器，加上保存笔记的按钮
+// TODO: 在详情页面加上一点击对应的元素就变为文本框编辑  (ok)
+// TODO: 添加session storage传递用户名、文件查看id、文件标题的信息
+// TODO: 完善MD编辑器 (ok)
+// TODO: 加上保存笔记的按钮
 // TODO: ajax、模板渲染
 
-function logout() {
+function editInfo (e) {
+    // 点选信息，开始编辑
+    $(e).hide();
+    $(e).next().show();
+}
+
+function logout () {
     // 登出
     // TODO: fill this
     console.log('bye');

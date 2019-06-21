@@ -11,6 +11,12 @@ li.active{
     color: #222 !important;
 }
 
+
+input:out-of-range{
+    border: 1px solid tomato !important;
+}
+  
+
 .scrollbar-primary::-webkit-scrollbar {
     width: 4px;
     height: 4px;
