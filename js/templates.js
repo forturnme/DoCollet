@@ -36,11 +36,19 @@ var _Mlib = // 分类的DOM模板
     </button>\
 </li>';
 
-var _Mlib_0 = // 特殊分类（待读、全部）的DOM模板
+var _Mlib_0 = // 特殊分类（待读）的DOM模板
 '<li class="waves-effect list-group-item d-flex \
     justify-content-between align-items-center" lid="{lib_id}" ltype="{type}" \
     ondragover="allowDrop(this, event)" ondragleave="docOut(this);" \
     ondrop="receiveDoc(this, event);" onclick="showDocsIn(this);">\
+        {lib_name}\
+    <span class="badge badge-primary badge-pill">{doc_count}</span>\
+</li>';
+
+var _Mlib_1 = // 特殊分类（全部）的DOM模板（不能拖入文件）
+'<li class="waves-effect list-group-item d-flex \
+    justify-content-between align-items-center" lid="{lib_id}" ltype="{type}" \
+    onclick="showDocsIn(this);">\
         {lib_name}\
     <span class="badge badge-primary badge-pill">{doc_count}</span>\
 </li>';

@@ -305,11 +305,11 @@ function renderLibTable(larray) {
         const lib = larray[i];
         if(lib.type==0){
             lib.lib_name = '<i class="fas fa-flag"></i>待读列表';
-            rl = $(_Mlib_01.format(lib));
+            rl = $(_Mlib_0.format(lib));
         }
         else if(lib.type==1){
             lib.lib_name = '<i class="fas fa-folder-open"></i>所有文献';
-            all = $(_Mlib_01.format(lib));
+            all = $(_Mlib_1.format(lib));
         }
         else {
             var li = $(_Mlib.format(lib));
