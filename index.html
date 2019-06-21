@@ -40,7 +40,7 @@
   <div id="main">
     <div class="row m-0">
       <div class="p-0 col-xl-2 col-lg-3 col-md-4 col-5">
-        <ul id="libs" class="list-group pr-1">
+        <div id="libs" class="list-group pr-1">
           <div class="row d-flex justify-content-center">
             <button type="button" class="btn btn-outline-primary waves-effect px-4 py-2" data-toggle="tooltip" title="创建分类" onclick="$('#newLibModal').modal('show');">
               <i class="fas fa-plus"></i>
@@ -49,102 +49,22 @@
               <i class="far fa-trash-alt"></i>
             </button>
           </div>
-          <ul id="libList" class="px-1 scrollbar-primary" style="overflow-y:auto;">
-            <li class="list-group-item d-flex justify-content-between align-items-center active" lid="1234452355" ondragover="allowDrop(this, event)" ondragleave="docOut(this);" ondrop="receiveDoc(this, event);">
-              Cras justo odio
-              <span class="badge badge-primary badge-pill">14</span>
-              <button type="button" class="btn btn-outline-danger waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="delLib(this);"
-                data-toggle="tooltip" title="移除此分类" style="display: none;">
-                <i class="fas fa-trash"></i>
-              </button>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Dapibus ac facilisis in
-              <span class="badge badge-primary badge-pill">2</span>
-              <button type="button" class="btn btn-outline-danger waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="delLib(this);"
-                data-toggle="tooltip" title="移除此分类" style="display: none;">
-                <i class="fas fa-trash"></i>
-              </button>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Morbi leo risus
-              <span class="badge badge-primary badge-pill">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Cras justo odio
-              <span class="badge badge-primary badge-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Dapibus ac facilisis in
-              <span class="badge badge-primary badge-pill">2</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Morbi leo risus
-              <span class="badge badge-primary badge-pill">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Cras justo odio
-              <span class="badge badge-primary badge-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Dapibus ac facilisis in
-              <span class="badge badge-primary badge-pill">2</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Morbi leo risus
-              <span class="badge badge-primary badge-pill">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Cras justo odio
-              <span class="badge badge-primary badge-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Dapibus ac facilisis in
-              <span class="badge badge-primary badge-pill">2</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Morbi leo risus
-              <span class="badge badge-primary badge-pill">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Cras justo odio
-              <span class="badge badge-primary badge-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Dapibus ac facilisis in
-              <span class="badge badge-primary badge-pill">2</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Morbi leo risus
-              <span class="badge badge-primary badge-pill">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Cras justo odio
-              <span class="badge badge-primary badge-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Dapibus ac facilisis in
-              <span class="badge badge-primary badge-pill">2</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Morbi leo risus
-              <span class="badge badge-primary badge-pill">1</span>
-            </li>
-            <li></li>
+          <ul id="libList" class="px-1 scrollbar-primary m-0 pb-1" style="overflow-y:auto;">
+            <!-- 分类列表渲染 -->
           </ul>
-        </ul>
+        </div>
       </div>
   
       <div id="ltable" class="col-xl-10 col-lg-9 col-md-8 col-7 m-0 p-0" lid="xxooxx00" ondragover="showLUpload(this, event);">
         <div id="docs" class="scrollbar-primary" style="overflow:auto;">
-          <div class="row">
+          <!-- <div class="row">
             <button type="button" class="btn btn-outline-primary waves-effect" onclick="getNote();">
               <i class="fas fa-plus"></i>&nbsp;向分类添加已有文献
             </button>
             <div style="vertical-align:middle">
               &nbsp;或者拖动文件来上传
             </div>
-          </div>
+          </div> -->
           <table id="dtDynamicVerticalScrollExample" class="table table-striped table-sm table-hover" cellspacing="0" width="100%">
             <thead>
               <tr>
@@ -170,16 +90,20 @@
                 <td>Denver</td>
                 <td>61</td>
                 <td>
-                  <div class="row m-0 p-0 align-middle" style="width: 96px;">
+                  <div class="row m-0 p-0 align-middle" style="width: 124px;">
                     <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="showinfo(this);"
                       data-toggle="tooltip" title="信息">
                       <i class="fas fa-info-circle"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="addToReadLater(this);"
+                      data-toggle="tooltip" title="待读">
+                      <i class="fas fa-flag"></i>
                     </button>
                     <button type="button" class="btn btn-outline-info waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="down(this);"
                       data-toggle="tooltip" title="下载">
                       <i class="fas fa-arrow-down"></i>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="remFromLib(this);"
+                    <button type="button" class="btn btn-outline-default waves-effect px-1 py-0 m-0 mr-1 mt-1" onclick="remFromLib(this);"
                       data-toggle="tooltip" title="从分类中移除">
                       <i class="fas fa-trash"></i>
                     </button>
@@ -713,7 +637,7 @@
 
   <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
   <script src="DataTable/datatables.js"></script>
-  <script src="js/dumbdata.js"></script><!--debug-->
+  <script src="js/templates.js"></script>
   <script src="js/render.js"></script>
   <script src="js/classes.js"></script>
   <script type="text/javascript" src="js/popper.min.js"></script>

@@ -7,6 +7,10 @@ dragImg.src = './img/file.jpg';
 
 let adev =()=>alert('锐意开发中');
 
+$(function(){
+    renderLibTable(dumbLibs.libs);
+})
+
 + function($) {
     'use strict';
 
@@ -130,14 +134,14 @@ $(()=>{
         language: {
             "sProcessing": "处理中...",
             "sLengthMenu": "每页显示 _MENU_ 篇文献",
-            "sZeroRecords": "没有匹配文献",
+            "sZeroRecords": "没有匹配的文献。",
             "sInfo": "显示第 _START_ 至 _END_ 篇文献，共 _TOTAL_ 项",
-            "sInfoEmpty": "没有文献可供显示",
+            "sInfoEmpty": "没有文献可供显示。<br>您可以拖动文献至此来上传到此分类。<br>",
             "sInfoFiltered": "(由 _MAX_ 篇文献过滤)",
             "sInfoPostFix": "",
             "sSearch": "搜索:",
             "sUrl": "",
-            "sEmptyTable": "没有文献可供显示",
+            "sEmptyTable": "没有文献可供显示。<br>您可以拖动文献至此来上传到此分类。<br>",
             "sLoadingRecords": "载入中...",
             "sInfoThousands": ",",
             "oPaginate": {
@@ -154,6 +158,19 @@ $(()=>{
     });
     $('.dataTables_length').addClass('bs-select');
 });
+
+function addToReadLater(btn) {
+    // 加到待读列表
+
+}
+
+function showDocsIn (li) {
+    // 点击lib时，激活此li并显示lib内容到右侧
+    let libListArea = $('#libList');
+    libListArea.children('li').removeClass('active');
+    $(li).addClass('active');
+    // FILL with ajax
+}
 
 function showinfo(button) {
     let infoModal = $('#infoModal');
@@ -279,12 +296,29 @@ function delDocConfirmed(btn) {
 }
 
 function renderLibTable(larray) {
-    var list = '';
+    // 把列表larray渲染到分类目录
+    let libListArea = $('#libList');
+    libListArea.empty(); // 先清空dom
+    var list = [];
+    var all, rl; // 全部和待读
     for (let i = 0; i < larray.length; i++) {
         const lib = larray[i];
-        list += '<li class="list-group-item d-flex justify-content-between align-items-center" lid="{0}">{1}<span class="badge badge-primary badge-pill">{2}</span></li>'.format(lib.lib_id ,lib.lib_name, lib.doc_count);
+        if(lib.type==0){
+            lib.lib_name = '<i class="fas fa-flag"></i>待读列表';
+            rl = $(_Mlib_01.format(lib));
+        }
+        else if(lib.type==1){
+            lib.lib_name = '<i class="fas fa-folder-open"></i>所有文献';
+            all = $(_Mlib_01.format(lib));
+        }
+        else {
+            var li = $(_Mlib.format(lib));
+            list.push(li);
+        }
     }
-    return list;
+    libListArea.append(all);
+    libListArea.append(rl);
+    libListArea.append(list);
 }
 
 function renderDocumentTable(darray) {
