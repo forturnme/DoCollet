@@ -89,7 +89,7 @@ function showLUpload(ltable, event) {
 // TODO: 添加session storage传递用户名、文件查看id、文件标题的信息
 // TODO: 完善MD编辑器 (ok)
 // TODO: 加上保存笔记的按钮
-// TODO: ajax、模板渲染
+// TODO: ajax、模板渲染 (ok)
 
 function editInfo (e) {
     // 点选信息，开始编辑
