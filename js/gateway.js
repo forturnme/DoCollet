@@ -84,6 +84,7 @@ function register(u, p) {
 }
 
 $("#登录>button").click((e) => {
+    console.log('login clicked');
     loading.removeClass("d-none");
     var username = $("#username").val();
     var plain_username = username;
@@ -98,7 +99,7 @@ $("#登录>button").click((e) => {
     login(username, passwd, plain_username);
 });
 
-$("#注册>div>button").click((e) => {
+$("#regis").click((e) => {
     loading.removeClass("d-none");
     var username = $("#usernamer").val();
     var passwd = $("#passwdr").val();

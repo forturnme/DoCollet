@@ -204,6 +204,8 @@ $(function(){
     // renderLibTable(dumbLibs.libs);
     // renderDocumentTable(dumbDocs.docs);
     updateLibs();
+    libListArea.children('li[lid="1"]').addClass('active');
+    getDocsIn('1', '1');
 });
 
 function dataTableTrun () {
