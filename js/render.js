@@ -217,6 +217,13 @@ function createLib(btn) {
     post_createLib(libname);
 }
 
+function readDoc(td){
+    // 点击阅读
+    let did = $(td).parent().attr('did');
+    sessionStorage.setItem('did',did);
+    window.open('./read.html');
+}
+
 function addToReadLater(btn) {
     // 加到待读列表
     let did = $(btn).parent().parent().parent().attr('did');

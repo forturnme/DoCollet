@@ -101,7 +101,7 @@ var _Mdoc = // 文章列表的DOM模板
     </div></td>\
     <td class="waves-effect" data-toggle="tooltip" title="点击以阅读" \
     ondragstart="dragDoc(this, event);" ondragend="dragDocOk(event);" \
-    draggable="true" style="min-width:400px;">{title}</td>\
+    draggable="true" style="min-width:400px;" onclick="readDoc(this);">{title}</td>\
     <td>{fst_author}</td>\
     <td>{source}</td>\
     <td>{year}</td>\
