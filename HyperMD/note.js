@@ -40,6 +40,5 @@ function save(){
 function renderNote(note) {
     // 渲染note
     note.replace(/\\n/g, '\n');
-    $('textarea').empty();
-    $('textarea').html(note);
+    editor.setValue(note);
 }
