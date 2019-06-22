@@ -25,13 +25,14 @@ function updateLibs () {
     // 获取liblist列表并绘制
     var libs = post_getLib();
     if(!libs)return;
-    // var lid = getCurrentLibId();
-    // if(lid){
-    //     var lt = getCurrentLibType();
-    //     // TODO    
-    // }
+    var lid = getCurrentLibId();
     // 未选中任何lib，直接渲染
     renderLibTable(libs);
+    if(lid){
+        // 有选择的lib，必须保持
+        libListArea.children('li').removeClass('active');
+        libListArea.children('li[lid="'+lid+'"]').addClass('active');
+    }
 }
 
 function getDocsIn(lid, ltype) {
