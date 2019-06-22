@@ -42,13 +42,16 @@ function postFile (upload) {
         // 把上传的文献加到现在的分类
         var ltype = getCurrentLibType();
         var lid = getCurrentLibId();
-        setTimeout(()=>
+        window.setTimeout(function()
             {
-                if(ltype=='1'){getDocsIn(lid, ltype);return;}
+                if(ltype=='1'){
+                    getDocsIn(lid, ltype);
+                    $('#uploadingModal').modal('hide');
+                    return;
+                }
                 post_addDocToLib(res.id, lid, ()=>{
                     getDocsIn(lid, ltype);
                 });
-                $('#uploadingModal').modal('hide');
             },
         200);
     };

@@ -16,8 +16,6 @@ $(()=>{
     if(un) $('#userName').html(un);
 });
 
-// let adev =()=>alert('锐意开发中');
-
 function getCurrentLibId() {
     // 获取现在的libid
     return libListArea.children('.active').attr('lid');
@@ -176,10 +174,10 @@ function networkWarn () {
 function promptSuccess(prompt) {
     // 返回一个提示操作已经成功的函数，提示词prompt
     return ()=>{
-        let ban = $('successBan');
-        ban.html(prompt);
-        ban.slideDown('slow');
-        setTimeout(()=>ban.slideUp('slow'), 1000);
+        console.log('ok')
+        $('#successBan').html(prompt);
+        $('#successBan').slideDown();
+        setTimeout(()=>$('#successBan').slideUp(), 1000);
     }
 }
 
