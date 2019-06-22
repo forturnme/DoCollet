@@ -25,7 +25,7 @@ function save(){
     $.ajax({
         type: "post",
         url: masterURL+'savenote',
-        data: JSON.stringify({'document_id':did,'note':note}),
+        data: JSON.stringify({'document_id':did,'note_content':note}),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function () {
