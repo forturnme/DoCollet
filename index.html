@@ -118,8 +118,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger waves-effect mr-auto" onclick="delDoc(this);">删除</button>
+          <button type="button" class="btn btn-primary waves-effect" onclick="updateInfo(this);">保存</button>
           <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">关闭</button>
-          <button type="button" class="btn btn-primary waves-effect">保存</button>
         </div>
       </div>
     </div>
@@ -268,28 +268,28 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="waves-effect" value="0" style="width: 20px;height:20px; margin: 10px;">
+            <div class="waves-effect" onclick="changeMarkTo(0);" style="width: 20px;height:20px; margin: 10px;">
               <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:lightgray;"></div>
             </div>
-            <div class="waves-effect" value="1" style="width: 20px;height:20px; margin: 10px;">
+            <div class="waves-effect" onclick="changeMarkTo(1);" style="width: 20px;height:20px; margin: 10px;">
               <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:red;"></div>
             </div>
-            <div class="waves-effect" value="2" style="width: 20px;height:20px; margin: 10px;">
+            <div class="waves-effect" onclick="changeMarkTo(2);" style="width: 20px;height:20px; margin: 10px;">
               <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:yellow;"></div>
             </div>
-            <div class="waves-effect" value="3" style="width: 20px;height:20px; margin: 10px;">
+            <div class="waves-effect" onclick="changeMarkTo(3);" style="width: 20px;height:20px; margin: 10px;">
               <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:blue;"></div>
             </div>
-            <div class="waves-effect" value="4" style="width: 20px;height:20px; margin: 10px;">
+            <div class="waves-effect" onclick="changeMarkTo(4);" style="width: 20px;height:20px; margin: 10px;">
               <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:blueviolet;"></div>
             </div>
-            <div class="waves-effect" value="5" style="width: 20px;height:20px; margin: 10px;">
+            <div class="waves-effect" onclick="changeMarkTo(5);" style="width: 20px;height:20px; margin: 10px;">
               <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:orange;"></div>
             </div>
-            <div class="waves-effect" value="6" style="width: 20px;height:20px; margin: 10px;">
+            <div class="waves-effect" onclick="changeMarkTo(6);" style="width: 20px;height:20px; margin: 10px;">
               <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:teal;"></div>
             </div>
-            <div class="waves-effect" value="7" style="width: 20px;height:20px; margin: 10px;">
+            <div class="waves-effect" onclick="changeMarkTo(7);" style="width: 20px;height:20px; margin: 10px;">
               <div onmousemove="border(this);" onmouseout="deborder(this);" style="width:20px;height:20px;border-radius:50%;background-color:lime;"></div>
             </div>
           </div>

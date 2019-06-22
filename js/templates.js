@@ -154,7 +154,7 @@ var _Minfo = // 详细信息的模板
 <div class="waves-effect" onclick="editInfo(this)">{id_parsed}</div>\
 <input id="eid" value="{paper_id}" type="text" class="form-control" style="display: none">\
 <h4>链接</h4>\
-<div><a href="http://www.12377.cn/">http://www.something.com/something?so=mething</a></div>';
+<div><a href="{link}">{link}</a></div>';
 
 var _Mauthor_b = '<span class="badge badge-primary">{0}</span>'; // 作者打散显示
 

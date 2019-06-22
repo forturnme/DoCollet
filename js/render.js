@@ -102,11 +102,13 @@ function showinfo(button) {
     // 点击详情，显示文献信息
     let infoModal = $('#infoModal');
     let infoBody = $('#infoBody');
-    let info = getInfoFor($(button).parent().parent().parent().attr('did'));
+    let did = $(button).parent().parent().parent().attr('did');
+    let info = getInfoFor(did);
     if(!info){
         networkWarn();
         return;
     }
+    infoBody.attr('did', did);
     info.author_parsed = parseAuthors(info.author);
     info += parseTopics(info);
     info += parseScore(info.score);
@@ -119,6 +121,26 @@ function editInfo (e) {
     // 点选信息，开始编辑
     $(e).hide();
     $(e).next().show();
+}
+
+function updateInfo(btn){
+    // 更新分类信息
+    var document_id = $('#infoBody').attr('did');
+    var title = $('#etitle').val();
+    var author = $('#eauthor').val();
+    var year = $('#eyear').val();
+    var source = $('#esource').val();
+    var score = $('#escore').val();
+    var id = $('#eid').val();
+    post_updateInfo({
+        'document_id':document_id, 
+        'title':title,
+        'author':author,
+        'year':year,
+        'source':source,
+        'score':score,
+        'paper_id':id
+    });
 }
 
 function hideLUpload(lupload) {
@@ -206,6 +228,12 @@ function changeMark(td) {
     let markModal = $('#markModal');
     markModal.attr('did', $(td).parent().attr('did'));
     markModal.modal('show');
+}
+
+function changeMarkTo (m) {
+    // 改变分类为m
+    let did = $('#markModal').attr('did');
+    post_changeMark(did, m);
 }
 
 function delLib (btn) {

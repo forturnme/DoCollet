@@ -224,3 +224,43 @@ function post_delLib(lid){
         }
     });
 }
+
+function post_updateInfo(info){
+    // 更新信息
+    var suc = ()=>{
+        $('#infoModal').modal('hide');
+        promptSuccess('信息已更新');
+    }
+    $.ajax({
+        type: "post",
+        url: masterURL+'editinfo',
+        data: JSON.stringify(info),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: suc,
+        error: (err, res)=>{
+            if(err.status==200)suc();
+            else networkWarn();
+        }
+    });
+}
+
+function post_changeMark(did, m) {
+    // 改变色标
+    var suc = ()=>{
+        $('#markModal').modal('hide');
+        getDocsIn(getCurrentLibId(), getCurrentLibType());
+    }
+    $.ajax({
+        type: "post",
+        url: masterURL+'mark',
+        data: JSON.stringify({'document_id':did,'mark_type':m}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: suc,
+        error: (err, res)=>{
+            if(err.status==200)suc();
+            else networkWarn();
+        }
+    });
+}

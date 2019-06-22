@@ -107,7 +107,7 @@ $("#注册>div>button").click((e) => {
         $('#badenter').modal('show');
         return;
     }
-    username = md5(username);
+    // username = md5(username);
     passwd = md5(passwd);
     register(username, passwd);
     return;
