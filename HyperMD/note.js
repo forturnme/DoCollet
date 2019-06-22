@@ -21,7 +21,7 @@ $(()=>{
 
 function save(){
     // 保存笔记
-    // let note = editor.getValue().replace(/\n/g, '\\n');
+    let note = editor.getValue();
     $.ajax({
         type: "post",
         url: masterURL+'savenote',
