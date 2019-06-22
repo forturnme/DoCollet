@@ -198,11 +198,12 @@ function parseScore (score) {
     // 图示化评分
     var s = parseInt(score);
     var starstr = '';
-    for (let f = 0; f < s/2; f++) {
+    var full = parseInt(s / 2);
+    for (let f = 0; f < full; f++) {
         starstr += _Mstar_1;
     }
     if(s%2==1)starstr += _Mstar_half;
-    for(let f = 0; f < 5-s/2-s%2; f++){
+    for(let f = 0; f < 5-full-s%2; f++){
         starstr += _Mstar_0;
     }
     var starsel = '';
