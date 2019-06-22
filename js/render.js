@@ -100,9 +100,9 @@ function showLUpload(ltable, event) {
 // TODO: 加上删除分类时的确认 (ok)
 // TODO: 加上退出登录的确认和方法 (ok, and ajax to be added)
 // TODO: 在详情页面加上一点击对应的元素就变为文本框编辑  (ok)
-// TODO: 添加session storage传递用户名、文件查看id、文件标题的信息
+// TODO: 添加session storage传递用户名、文件查看id、文件标题的信息 (ok)
 // TODO: 完善MD编辑器 (ok)
-// TODO: 加上保存笔记的按钮
+// TODO: 加上保存笔记的按钮 (ok)
 // TODO: ajax、模板渲染 (ok)
 
 function showinfo(button) {

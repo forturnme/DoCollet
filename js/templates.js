@@ -199,7 +199,7 @@ function parseScore (score) {
         starstr += _Mstar_1;
     }
     if(s%2==1)starstr += _Mstar_half;
-    for(let f = 0; f < 10-s/2*2; f++){
+    for(let f = 0; f < 5-s/2-s%2; f++){
         starstr += _Mstar_0;
     }
     var starsel = '';
