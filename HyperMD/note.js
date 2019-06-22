@@ -21,9 +21,7 @@ $(()=>{
 
 function save(){
     // 保存笔记
-    let note = $('textarea').html();
-    console.log(note);
-    return;
+    let note = editor.getValue();
     $.ajax({
         type: "post",
         url: masterURL+'savenote',
