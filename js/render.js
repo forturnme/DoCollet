@@ -329,6 +329,7 @@ function showDelLibBtn (btn) {
     $(btn).removeClass('btn-outline-secondary');
     $(btn).addClass('btn-danger');
     $(btn).attr('onclick','hideDelLibBtn(this);');
+    tooltipInit();
 }
 
 function hideDelLibBtn (btn) {
@@ -337,6 +338,7 @@ function hideDelLibBtn (btn) {
     $(btn).removeClass('btn-danger');
     $(btn).addClass('btn-outline-secondary');
     $(btn).attr('onclick','showDelLibBtn(this);');
+    tooltipInit();
 }
 
 function delDoc(delBtn){

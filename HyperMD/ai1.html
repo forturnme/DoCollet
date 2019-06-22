@@ -19,7 +19,6 @@
 </style>
 
 <body style="margin: 0;">
-
   <div id="loadingSplash">
     <p>
       <i class="loadingIcon"></i>
@@ -31,8 +30,8 @@
 
   <!-- 折叠、保存、下载的按钮放置的区域 -->
   <div id="toolbar" style="height: 36px;width: 100%;margin: 0;position: fixed;top: 0;z-index: 5;">
-    <button id="toNormal">switchToNormal</button>
-    <button id="toHyperMD">switchToHyperMD</button>
+    <button id="toNormal" style="display: none">switchToNormal</button>
+    <button id="toHyperMD" style="display: none">switchToHyperMD</button>
     <button>折叠</button>
     <button onclick="save();">保存</button>
   </div>

@@ -36,15 +36,21 @@ function post_getLib () {
 
 function postFile (upload) {
     // 投递文献
+    $('#uploadingModal').modal('show');
     var suc = (res)=>{
         promptSuccess('文献上传成功')();
         // 把上传的文献加到现在的分类
         var ltype = getCurrentLibType();
         var lid = getCurrentLibId();
-        if(ltype=='1'){getDocsIn(lid, ltype);return;}
-        post_addDocToLib(res.id, lid, ()=>{
-            getDocsIn(lid, ltype);
-        });
+        setTimeout(()=>
+            {
+                if(ltype=='1'){getDocsIn(lid, ltype);return;}
+                post_addDocToLib(res.id, lid, ()=>{
+                    getDocsIn(lid, ltype);
+                });
+                $('#uploadingModal').modal('hide');
+            },
+        200);
     };
     $.ajax({
         type: "post",
@@ -56,7 +62,10 @@ function postFile (upload) {
         success: suc,
         error: function (err, res) {
             if(err.status==200)suc(res);
-            else if(err.status==403)$('#exceedLimitModal').modal('show');
+            else if(err.status==403){
+                $('#uploadingModal').modal('hide');
+                $('#exceedLimitModal').modal('show');
+            }
             else networkWarn();
         }
     });
