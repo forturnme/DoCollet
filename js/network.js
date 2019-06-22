@@ -20,6 +20,7 @@ function post_getLib () {
     // 获得文献列表
     var libs = null;
     $.ajax({
+        async: false,
         type: "post",
         url: masterURL+'getlib',
         success: function (response) {
@@ -66,6 +67,7 @@ function getInfoFor(did) {
     $.ajax({
         type: "post",
         url: masterURL+'getinfo',
+        async: false,
         data: JSON.stringify({'document_id':did}),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -73,7 +75,9 @@ function getInfoFor(did) {
             info = response;
         },
         error: function (err, res) {
-            if(err.status==200)info = res;
+            if(err.status==200){
+                info = res;
+            }
             else if(err)console.error(err);
         }
     });
@@ -126,6 +130,7 @@ function post_getDoc(lid, ltype) {
     var docs = null;
     $.ajax({
         type: "post",
+        async: false,
         url: masterURL+'getdocsinlib/'+ltype,
         data: JSON.stringify({'lib_id':lid}),
         contentType: "application/json; charset=utf-8",

@@ -102,6 +102,7 @@ function showinfo(button) {
     // 点击详情，显示文献信息
     let infoModal = $('#infoModal');
     let infoBody = $('#infoBody');
+    infoBody.empty();
     let did = $(button).parent().parent().parent().attr('did');
     let info = getInfoFor(did);
     if(!info){
@@ -110,9 +111,13 @@ function showinfo(button) {
     }
     infoBody.attr('did', did);
     info.author_parsed = parseAuthors(info.author);
-    info += parseTopics(info);
-    info += parseScore(info.score);
-    info.id_parsed = parseid(info.paper_id);
+    var foo =  parseTopics(info);
+    info.topic_parsed = foo.topic_parsed;
+    info.topic_s = foo.topic_s;
+    foo = parseScore(info.score);
+    info.starstr = foo.starstr;
+    info.starsel = foo.starsel;
+    info.id_parsed = parseid(info['paper_id']);
     infoBody.append($(_Minfo.format(info)));
     infoModal.modal('show');
 }
@@ -214,7 +219,7 @@ function createLib(btn) {
 
 function addToReadLater(btn) {
     // 加到待读列表
-    let did = $(button).parent().parent().parent().attr('did');
+    let did = $(btn).parent().parent().parent().attr('did');
     post_addToReadLater(did);
 }
 

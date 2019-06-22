@@ -130,7 +130,7 @@ var _Minfo = // 详细信息的模板
 <div class="waves-effect" onclick="editInfo(this)">{title}</div>\
 <input id="etitle" value="{title}" type="text" class="form-control" style="display: none">\
 <h4>作者</h4>\
-<div class="waves-effect" onclick="editInfo(this)">{author_parsed}<div>\
+<div class="waves-effect" onclick="editInfo(this)">{author_parsed}</div>\
 <input id="eauthors" value="{author}" type="text" class="form-control" style="display: none">\
 <h4>年份</h4>\
 <div class="waves-effect" onclick="editInfo(this)">{year}</div>\
@@ -156,9 +156,9 @@ var _Minfo = // 详细信息的模板
 <h4>链接</h4>\
 <div><a href="{link}">{link}</a></div>';
 
-var _Mauthor_b = '<span class="badge badge-primary">{0}</span>'; // 作者打散显示
+var _Mauthor_b = '<span class="badge badge-primary m-1">{0}</span>'; // 作者打散显示
 
-var _Mtopic_b = '<span class="badge badge-info">{0}</span>'; // 题材打散
+var _Mtopic_b = '<span class="badge badge-info m-1">{0}</span>'; // 题材打散
 
 // 实心星星，半星，空心星星
 var _Mstar_1 = '<i class="fas fa-star"></i>';
@@ -167,6 +167,7 @@ var _Mstar_0 = '<i class="far fa-star"></i>';
 
 function parseAuthors (la) {
     // 解析作者列表
+    la = la.split(',');
     var alist = '';
     for(let i = 0;i < la.length; i++){
         alist += _Mauthor_b.format(la[i]);
@@ -176,8 +177,9 @@ function parseAuthors (la) {
 
 function parseTopics (info) {
     // 解析话题
-    let ti = info.topic_id;
-    let tn = info.topic_name
+    let ti = info.topic;
+    let tn = ""+info.topic_name;
+    tn = tn.split(',');
     var formatted_tlist = '';
     for (let i = 0; i < tn.length; i++) {
         const t = tn[i];
