@@ -4,6 +4,7 @@ let docList = $('#docs');
 let docTable = $('#docTable');
 let libListArea = $('#libList');
 
+// 本地测试用
 var masterURL = 'http://39.108.137.227/';
 
 var dragImg = new Image(); 
@@ -139,7 +140,7 @@ function updateInfo(btn){
     // 更新分类信息
     var document_id = $('#infoBody').attr('did');
     var title = $('#etitle').val();
-    var author = $('#eauthor').val();
+    var author = $('#eauthors').val().split(',');
     var year = $('#eyear').val();
     var source = $('#esource').val();
     var score = $('#escore').val();
