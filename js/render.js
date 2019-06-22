@@ -308,7 +308,7 @@ function down(button) {
 function remFromLib(button) {
     // 从分类中移除一篇文献
     if(getCurrentLibType=='1')return;
-    let did = $('#infoBody').attr('did');
+    let did = $(button).parent().parent().parent().attr('did');
     var lid = getCurrentLibId();
     post_remDocFromLib(did, lid);
 }
@@ -338,7 +338,7 @@ function delDoc(delBtn){
 
 function delDocConfirmed(btn) {
     // 处理删除文献
-    let did = $(btn).parent().parent().parent().parent().attr('did');
+    let did = $('#infoBody').attr('did');
     post_removeDoc(did);
     $('#warnRemDocModal').modal('hide');
     $('#infoModal').modal('hide');
