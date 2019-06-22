@@ -33,7 +33,7 @@ function save(){
         },
         error: (err, res)=>{
             if(err.status==200)alert('保存成功。');
-            alert('网络错误，请稍后再试。')
+            else alert('网络错误，请稍后再试。')
         }
     });
 }

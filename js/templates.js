@@ -226,85 +226,85 @@ function parseid (id) {
     }
 }
 
-// 调试用假数据
-var dumbLibs = {
-    'libs':[
-        {
-            'lib_id':'121424',
-            'lib_name':'分类1',
-            'doc_count':'3',
-            'type':'2'
-        },
-        {
-            'lib_id':'121343',
-            'lib_name':'分类2',
-            'doc_count':'6',
-            'type':'2'
-        },
-        {
-            'lib_id':'114514',
-            'lib_name':'分类3',
-            'doc_count':'12',
-            'type':'2'
-        },
-        {
-            'lib_id':'123412',
-            'lib_name':'分类4',
-            'doc_count':'5',
-            'type':'2'
-        },
-        {
-            'lib_id':'242435',
-            'lib_name':'rel',
-            'doc_count':'3',
-            'type':'0'
-        },
-        {
-            'lib_id':'544531',
-            'lib_name':'分类5',
-            'doc_count':'8',
-            'type':'2'
-        },
-        {
-            'lib_id':'234413',
-            'lib_name':'asd',
-            'doc_count':'34',
-            'type':'1'
-        },
-        {
-            'lib_id':'243924',
-            'lib_name':'分类7',
-            'doc_count':'2',
-            'type':'2'
-        }
-    ]
-};
+// // 调试用假数据
+// var dumbLibs = {
+//     'libs':[
+//         {
+//             'lib_id':'121424',
+//             'lib_name':'分类1',
+//             'doc_count':'3',
+//             'type':'2'
+//         },
+//         {
+//             'lib_id':'121343',
+//             'lib_name':'分类2',
+//             'doc_count':'6',
+//             'type':'2'
+//         },
+//         {
+//             'lib_id':'114514',
+//             'lib_name':'分类3',
+//             'doc_count':'12',
+//             'type':'2'
+//         },
+//         {
+//             'lib_id':'123412',
+//             'lib_name':'分类4',
+//             'doc_count':'5',
+//             'type':'2'
+//         },
+//         {
+//             'lib_id':'242435',
+//             'lib_name':'rel',
+//             'doc_count':'3',
+//             'type':'0'
+//         },
+//         {
+//             'lib_id':'544531',
+//             'lib_name':'分类5',
+//             'doc_count':'8',
+//             'type':'2'
+//         },
+//         {
+//             'lib_id':'234413',
+//             'lib_name':'asd',
+//             'doc_count':'34',
+//             'type':'1'
+//         },
+//         {
+//             'lib_id':'243924',
+//             'lib_name':'分类7',
+//             'doc_count':'2',
+//             'type':'2'
+//         }
+//     ]
+// };
 
-var dumbDocs = // 测试文档渲染器的假数据
-{
-    docs:[{
-        'document_id':'12423rwffw34d3w2wcae',
-        'title':'New Approach to Get Things Fxxk Up',
-        'mark':'0',
-        'fst_author':'John Dean',
-        'source':'CADFFA',
-        'year':'2016'
-    },
-    {
-        'document_id':'afsfffwef8a39fuawh83hwe',
-        'title':'A Quama fsa ffawe fcs vzev ef',
-        'mark':'0',
-        'fst_author':'Jdfafe sdv',
-        'source':'ODJJ',
-        'year':'1999'
-    },
-    {
-        'document_id':'a23rwifj389fwfwfobvbnmdk',
-        'title':'Injko NJ iKN Mk Mo lMMMMMMllkko',
-        'mark':'4',
-        'fst_author':'Oad fasasq',
-        'source':'PIJPd',
-        'year':'2004'
-    }
-    ]
-};
+// var dumbDocs = // 测试文档渲染器的假数据
+// {
+//     docs:[{
+//         'document_id':'12423rwffw34d3w2wcae',
+//         'title':'New Approach to Get Things Fxxk Up',
+//         'mark':'0',
+//         'fst_author':'John Dean',
+//         'source':'CADFFA',
+//         'year':'2016'
+//     },
+//     {
+//         'document_id':'afsfffwef8a39fuawh83hwe',
+//         'title':'A Quama fsa ffawe fcs vzev ef',
+//         'mark':'0',
+//         'fst_author':'Jdfafe sdv',
+//         'source':'ODJJ',
+//         'year':'1999'
+//     },
+//     {
+//         'document_id':'a23rwifj389fwfwfobvbnmdk',
+//         'title':'Injko NJ iKN Mk Mo lMMMMMMllkko',
+//         'mark':'4',
+//         'fst_author':'Oad fasasq',
+//         'source':'PIJPd',
+//         'year':'2004'
+//     }
+//     ]
+// };
