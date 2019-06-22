@@ -65,6 +65,9 @@
               &nbsp;或者拖动文件来上传
             </div>
           </div> -->
+          <div id="successBan" style="display: none;" class="alert alert-primary" role="alert">
+            成功
+          </div>
           <table id="dtDynamicVerticalScrollExample" class="table table-striped table-sm table-hover" cellspacing="0" width="100%">
             <thead>
               <tr>
@@ -223,11 +226,31 @@
         <div class="modal-body">
           <div>免费用户只能上传X篇文献，创建X个分类。</div>
           <div>请付费以继续操作</div>
-          <input type="text" class="form-control">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="payFor(this);">确定</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 网络问题的对话框 -->
+  <div class="modal fade" id="neterrModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel7" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel7">网络问题</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>请稍后再试。</div>
+          <input type="text" class="form-control">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
         </div>
       </div>
     </div>

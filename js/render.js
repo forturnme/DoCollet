@@ -20,25 +20,9 @@ let adev =()=>alert('锐意开发中');
     var startUpload = function(files) {
         var upload = new FormData();
         upload.append('data',files[0]);
-        // 只用这一回，直接内联了
-        $.ajax({
-            type: "post",
-            url: "http://39.108.137.227/upload",
-            cache: false,//上传文件不需要缓存
-            processData: false, // 告诉jQuery不要去处理发送的数据
-            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
-            data: upload,
-            success: function (response) {
-                console.log(response);
-                $('#lupload').hide();
-                $('#ltable').show();
-            },
-            error: function (err, res) {
-                console.log(res);
-                $('#lupload').hide();
-                $('#ltable').show();
-            }
-        });
+        postFile(upload);
+        $('#lupload').hide();
+        $('#ltable').show();
     }
 
     dropZone.ondrop = function(e) {
@@ -91,6 +75,23 @@ function showLUpload(ltable, event) {
 // TODO: 加上保存笔记的按钮
 // TODO: ajax、模板渲染 (ok)
 
+function showinfo(button) {
+    // 点击详情，显示文献信息
+    let infoModal = $('#infoModal');
+    let infoBody = $('#infoBody');
+    let info = getInfoFor($(button).parent().parent().parent().attr('did'));
+    if(!info){
+        networkWarn();
+        return;
+    }
+    info.author_parsed = parseAuthors(info.author);
+    info += parseTopics(info);
+    info += parseScore(info.score);
+    info.id_parsed = parseid(info.paper_id);
+    infoBody.append($(_Minfo.format(info)));
+    infoModal.modal('show');
+}
+
 function editInfo (e) {
     // 点选信息，开始编辑
     $(e).hide();
@@ -101,6 +102,21 @@ function hideLUpload(lupload) {
     // 文件没拖入时隐藏上传显示列表
     $(lupload).hide();
     $('#ltable').show();
+}
+
+function networkWarn () {
+    // 显示一个网络错误的对话框
+    $('#neterrModal').modal('show');
+}
+
+function promptSuccess(prompt) {
+    // 返回一个提示操作已经成功的函数，提示词prompt
+    return ()=>{
+        let ban = $('successBan');
+    ban.html(prompt);
+    ban.slideDown('slow');
+    setTimeout(()=>ban.slideUp('slow'), 1000);
+    }
 }
 
 function tooltipInit () {
@@ -146,7 +162,8 @@ function dataTableInit () {
 
 function addToReadLater(btn) {
     // 加到待读列表
-
+    let did = $(button).parent().parent().parent().attr('did');
+    post_addToReadLater(did, updateLibs);
 }
 
 function showDocsIn (li) {
@@ -154,39 +171,6 @@ function showDocsIn (li) {
     libListArea.children('li').removeClass('active');
     $(li).addClass('active');
     // FILL with ajax
-}
-
-function showinfo(button) {
-    // 点击详情，显示文献信息
-    let infoModal = $('#infoModal');
-    let infoBody = $('#infoBody');
-    let info = getInfoFor($(button).parent().parent().parent().attr('did'));
-    if(!info)return;
-    info.author_parsed = parseAuthors(info.author);
-    info += parseTopics(info);
-    info += parseScore(info.score);
-    info.id_parsed = parseid(info.paper_id);
-    infoBody.append($(_Minfo.format(info)));
-    infoModal.modal('show');
-}
-
-function getInfoFor(did) {
-    // 请求id为did的文献信息
-    var info = null;
-    $.ajax({
-        type: "post",
-        url: masterURL+'getinfo',
-        data: JSON.stringify({'document_id':did}),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (response) {
-            info = response;
-        },
-        error: function (err, res) {
-            if(err)console.error(err);
-        }
-    });
-    return info;
 }
 
 function changeMark(td) {
