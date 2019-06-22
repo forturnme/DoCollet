@@ -124,7 +124,7 @@ function login_r(){
         return;
     }
     var passwd = $("#passwdr").val();
-    passwd = md5(passwd+s);
     passwd = md5(passwd);
+    passwd = md5(passwd+s);
     login(username, passwd, username);
 }
