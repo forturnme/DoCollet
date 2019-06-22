@@ -113,9 +113,9 @@ function promptSuccess(prompt) {
     // 返回一个提示操作已经成功的函数，提示词prompt
     return ()=>{
         let ban = $('successBan');
-    ban.html(prompt);
-    ban.slideDown('slow');
-    setTimeout(()=>ban.slideUp('slow'), 1000);
+        ban.html(prompt);
+        ban.slideDown('slow');
+        setTimeout(()=>ban.slideUp('slow'), 1000);
     }
 }
 
