@@ -183,6 +183,12 @@ function dataTableInit () {
     $('.dataTables_length').addClass('bs-select');
 }
 
+function createLib(btn) {
+    // 添加分类
+    var libname = $('#libName').val();
+    post_createLib(libname);
+}
+
 function addToReadLater(btn) {
     // 加到待读列表
     let did = $(button).parent().parent().parent().attr('did');
@@ -193,7 +199,7 @@ function showDocsIn (li) {
     // 点击lib时，激活此li并显示lib内容到右侧
     libListArea.children('li').removeClass('active');
     $(li).addClass('active');
-    // FILL with ajax
+    getDocsIn($(li).attr('lid'), $(li).attr('ltype'));
 }
 
 function changeMark(td) {
@@ -205,7 +211,7 @@ function changeMark(td) {
 function delLib (btn) {
     // 删除library
     let lid = $(btn).parent().attr('lid');
-    let m = $('#warnDelLibModal')
+    let m = $('#warnDelLibModal');
     m.attr('lid',lid);
     m.modal('show');
     hideDelLibBtn('#showDelLibBtn');
@@ -214,7 +220,7 @@ function delLib (btn) {
 function delLibConfirmed (btn) {
     let lid = $(btn).parent().parent().parent().parent().attr('lid');
     // 实际操作删除分类
-    adev();
+    post_delLib(lid);
 }
 
 function dragDoc(tr, event) {

@@ -161,3 +161,66 @@ function post_remDocFromLib(did, lid){
         }
     });
 }
+
+function post_removeDoc(did) {
+    // 永久删除文献
+    var suc = ()=>{
+        var lid = getCurrentLibId();
+        var lt  = getCurrentLibType();
+        promptSuccess('文献已经删除')();
+        getDocsIn(lid, lt);
+        updateLibs();
+    }
+    $.ajax({
+        type: "post",
+        url: masterURL+'removedoc',
+        data: JSON.stringify({'document_id':did}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: suc,
+        error: (err, res)=>{
+            if(err.status==200)suc();
+            else networkWarn();
+        }
+    });
+}
+
+function post_createLib(libname){
+    // 创建新分类
+    var suc = ()=>{
+        $('#newLibModal').modal('hide');
+        updateLibs();
+    };
+    $.ajax({
+        type: "post",
+        url: masterURL+'addlib',
+        data: JSON.stringify({'lib_name':libname}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: suc,
+        error: (err, res)=>{
+            if(err.status==200)suc();
+            else networkWarn();
+        }
+    });
+}
+
+function post_delLib(lid){
+    // 删除分类
+    var suc = ()=>{
+        $('#warnDelLibModal').modal('hide');
+        updateLibs();
+    }
+    $.ajax({
+        type: "post",
+        url: masterURL+'deletelib',
+        data: JSON.stringify({'lib_id':lid}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: suc,
+        error: (err, res)=>{
+            if(err.status==200)suc();
+            else networkWarn();
+        }
+    });
+}
