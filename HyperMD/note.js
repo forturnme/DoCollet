@@ -39,6 +39,6 @@ function save(){
 
 function renderNote(note) {
     // 渲染note
-    note.replace(/\\n/g, '\n');
+    note.replace(/\\\\n/g, '\n');
     editor.setValue(note);
 }
