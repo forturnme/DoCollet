@@ -93,8 +93,9 @@ $("#登录>button").click((e) => {
         loading.addClass('d-none');
         return;
     }
-    var passwd = $("#passwd").val();
+    var passwd = md5($("#passwd").val());
     passwd = md5(passwd+s);
+    console.log(passwd);
     login(username, passwd, plain_username);
 });
 
