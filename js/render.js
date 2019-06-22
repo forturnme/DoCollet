@@ -188,8 +188,9 @@ $(function () {
 });
 
 $(function(){
-    renderLibTable(dumbLibs.libs);
-    renderDocumentTable(dumbDocs.docs);
+    // renderLibTable(dumbLibs.libs);
+    // renderDocumentTable(dumbDocs.docs);
+    updateLibs();
 });
 
 function dataTableTrun () {
