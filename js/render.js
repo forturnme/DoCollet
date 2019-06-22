@@ -10,7 +10,13 @@ var masterURL = 'http://39.108.137.227/';
 var dragImg = new Image(); 
 dragImg.src = './img/file.jpg'; 
 
-let adev =()=>alert('锐意开发中');
+$(()=>{
+    // 在线用户，替换'鸡你太美'
+    var un = sessionStorage.getItem('username');
+    if(un) $('#userName').html(un);
+});
+
+// let adev =()=>alert('锐意开发中');
 
 function getCurrentLibId() {
     // 获取现在的libid

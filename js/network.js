@@ -56,6 +56,7 @@ function postFile (upload) {
         success: suc,
         error: function (err, res) {
             if(err.status==200)suc(res);
+            else if(err.status==403)$('#exceedLimitModal').modal('show');
             else networkWarn();
         }
     });
@@ -206,6 +207,7 @@ function post_createLib(libname){
         success: suc,
         error: (err, res)=>{
             if(err.status==200)suc();
+            else if(err.status==403)$('#exceedLimitModal').modal('show');
             else networkWarn();
         }
     });
@@ -266,6 +268,21 @@ function post_changeMark(did, m) {
         success: suc,
         error: (err, res)=>{
             if(err.status==200)suc();
+            else networkWarn();
+        }
+    });
+}
+
+function post_updateForFree(){
+    // 免费升级至高级用户！你还在犹豫什么！赶紧抄起键盘升级吧！（不
+    $.ajax({
+        type: "post",
+        url: masterURL+'upgrade',
+        success: function (response) {
+            $('#upgradeModal').modal('hide')
+        },
+        error:()=>{
+            if(err.status==200)$('#upgradeModal').modal('hide');
             else networkWarn();
         }
     });
