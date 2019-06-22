@@ -309,7 +309,7 @@ function down(button) {
 
 function remFromLib(button) {
     // 从分类中移除一篇文献
-    if(getCurrentLibType=='1')return;
+    if(getCurrentLibId=='1' || getCurrentLibType=='1')return;
     let did = $(button).parent().parent().parent().attr('did');
     var lid = getCurrentLibId();
     post_remDocFromLib(did, lid);
@@ -376,9 +376,13 @@ function renderDocumentTable(darray) {
     // 把文献列表渲染到docTable
     docTable.empty();
     dataTableTrun();
+    var isAll = getCurrentLibId=='1';
     for (let i = 0; i < darray.length; i++) {
         const doc = darray[i];
         doc.mark = markColours[doc.mark];
+        // 如果分类为所有文献那么不渲染移除按钮
+        if(!isAll)doc.remove_btn = _MRemoveDoc;
+        else doc.remove_btn = '';
         docTable.append($(_Mdoc.format(doc)));
     }
     dataTableInit();

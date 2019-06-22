@@ -118,12 +118,15 @@ var _Mdoc = // 文章列表的DOM模板
         onclick="down(this);" data-toggle="tooltip" title="下载">\
         <i class="fas fa-arrow-down"></i>\
         </button>\
-        <button type="button" class="btn btn-outline-default waves-effect px-1 py-0 m-0 mr-1 mt-1" \
-        onclick="remFromLib(this);" data-toggle="tooltip" title="从分类中移除">\
-        <i class="fas fa-trash"></i>\
-        </button>\
+        {remove_btn}\
     </div></td>\
 </tr>';
+
+var _MRemoveDoc = // 移除文献的按钮，在'所有文献'中不应该出现
+'<button type="button" class="btn btn-outline-default waves-effect px-1 py-0 m-0 mr-1 mt-1" \
+    onclick="remFromLib(this);" data-toggle="tooltip" title="从分类中移除">\
+    <i class="fas fa-trash"></i>\
+</button>';
 
 var _Minfo = // 详细信息的模板
 '<h4 did="{document_id}">标题</h4>\

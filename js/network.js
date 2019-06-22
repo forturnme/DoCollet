@@ -109,7 +109,7 @@ function post_addDocToLib (did, lid, func) {
     var suc = ()=>{
         promptSuccess('文献已加入分类')();
         updateLibs();
-        func();
+        if(func)func();
     };
     $.ajax({
         type: "post",
@@ -152,6 +152,7 @@ function post_remDocFromLib(did, lid){
         promptSuccess('文献已从分类中移除')();
         var lt = getCurrentLibType();
         getDocsIn(lid, lt);
+        updateLibs();
     }
     $.ajax({
         type: "post",
