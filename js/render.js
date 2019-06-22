@@ -11,6 +11,30 @@ dragImg.src = './img/file.jpg';
 
 let adev =()=>alert('锐意开发中');
 
+function getCurrentLibId() {
+    // 获取现在的libid
+    return libListArea.children('.active').attr('lid');
+}
+
+function getCurrentLibType() {
+    // 获取现在的libid
+    return libListArea.children('.active').attr('ltype');
+}
+
+function updateLibs () {
+    // 获取liblist列表并绘制
+    var libs = post_getLib();
+    if(!libs)return;
+    renderLibTable(libs);
+}
+
+function getDocsIn(lid, ltype) {
+    // 获得lid中的文档并绘制
+    var docs = post_getDoc(lid, ltype);
+    if(!docs)return;
+    renderDocumentTable(docs);
+}
+
 + function($) {
     // 拖放文件上传
     'use strict';
@@ -56,7 +80,6 @@ function deborder(div) {
 
 function showLUpload(ltable, event) {
     // 文件拖入时隐藏列表显示上传
-    console.log(event);
     if(event.dataTransfer.effectAllowed == 'copy')return;
     let lupload = $('#lupload');
     lupload.attr('lid', $(ltable).attr('lid'));
@@ -163,7 +186,7 @@ function dataTableInit () {
 function addToReadLater(btn) {
     // 加到待读列表
     let did = $(button).parent().parent().parent().attr('did');
-    post_addToReadLater(did, updateLibs);
+    post_addToReadLater(did);
 }
 
 function showDocsIn (li) {
@@ -220,8 +243,7 @@ function receiveDoc (li, event) {
     let lid = $(li).attr('lid');
     var did = event.dataTransfer.getData("Text");
     docOut(li);
-    console.log(lid);
-    console.log(did);
+    post_addDocToLib(did, lid);
 }
 
 function saveNote() {
@@ -247,16 +269,17 @@ function getNote() {
 }
 
 function down(button) {
+    // 下载文献
     let did = $(button).parent().parent().parent().attr('did');
-    // window.open('document-download-list'+did);
-    window.open('http://39.108.137.227/getdoc/5d08ea3da444cde42d4e6d66');
-    adev();
+    window.open(masterURL+'getdoc/'+did);
 }
 
 function remFromLib(button) {
     // 从分类中移除一篇文献
+    if(getCurrentLibType=='1')return;
     let did = $(button).parent().parent().parent().attr('did');
-    adev();
+    var lid = getCurrentLibId();
+    post_remDocFromLib(did, lid);
 }
 
 function showDelLibBtn (btn) {
@@ -285,9 +308,9 @@ function delDoc(delBtn){
 function delDocConfirmed(btn) {
     // 处理删除文献
     let did = $(btn).parent().parent().parent().parent().attr('did');
+    post_removeDoc(did);
     $('#warnRemDocModal').modal('hide');
     $('#infoModal').modal('hide');
-    adev();
 }
 
 function renderLibTable(larray) {
