@@ -105,7 +105,7 @@ var _Mdoc = // 文章列表的DOM模板
     <td>{fst_author}</td>\
     <td>{source}</td>\
     <td>{year}</td>\
-    <td><div class="row m-0 p-0 align-middle" style="width: 124px;">\
+    <td><div class="row m-0 p-0 align-middle" style="width: 128px;">\
         <button type="button" class="btn btn-outline-primary waves-effect px-1 py-0 m-0 mr-1 mt-1" \
         onclick="showinfo(this);" data-toggle="tooltip" title="信息">\
         <i class="fas fa-info-circle"></i>\

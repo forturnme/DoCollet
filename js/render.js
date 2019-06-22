@@ -25,6 +25,12 @@ function updateLibs () {
     // 获取liblist列表并绘制
     var libs = post_getLib();
     if(!libs)return;
+    // var lid = getCurrentLibId();
+    // if(lid){
+    //     var lt = getCurrentLibType();
+    //     // TODO    
+    // }
+    // 未选中任何lib，直接渲染
     renderLibTable(libs);
 }
 
@@ -293,28 +299,6 @@ function receiveDoc (li, event) {
     post_addDocToLib(did, lid);
 }
 
-function saveNote() {
-    $.ajax({
-        type: "post",
-        url: "http://39.108.137.227/savenote",
-        data: {document_id:"5d08ea3da444cde42d4e6d66", note_content:"Hey There\n"},
-        success: function (response) {
-            console.log(response);
-        }
-    });
-}
-
-function getNote() {
-    $.ajax({
-        type: "post",
-        url: "http://39.108.137.227/getnote",
-        data: {document_id:"5d08ea3da444cde42d4e6d66"},
-        success: function (response) {
-            console.log(response);
-        }
-    });
-}
-
 function down(button) {
     // 下载文献
     let did = $(button).parent().parent().parent().attr('did');
@@ -324,7 +308,7 @@ function down(button) {
 function remFromLib(button) {
     // 从分类中移除一篇文献
     if(getCurrentLibType=='1')return;
-    let did = $(button).parent().parent().parent().attr('did');
+    let did = $('#infoBody').attr('did');
     var lid = getCurrentLibId();
     post_remDocFromLib(did, lid);
 }
