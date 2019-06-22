@@ -12,17 +12,15 @@ dragImg.src = './img/file.jpg';
 let adev =()=>alert('锐意开发中');
 
 + function($) {
+    // 拖放文件上传
     'use strict';
 
-    // UPLOAD CLASS DEFINITION
-    // ======================
-
     var dropZone = document.getElementById('drop-zone');
-    // var uploadForm = document.getElementById('js-upload-form');
 
     var startUpload = function(files) {
         var upload = new FormData();
         upload.append('data',files[0]);
+        // 只用这一回，直接内联了
         $.ajax({
             type: "post",
             url: "http://39.108.137.227/upload",
@@ -101,8 +99,20 @@ function editInfo (e) {
 
 function logout () {
     // 登出
-    // TODO: fill this
-    console.log('bye');
+    let logoutredir = function () {
+        console.log('bye');
+        window.location.href = './gateway.html';
+        return;
+    }
+    $.ajax({
+        type: "post",
+        url: masterURL+'logout',
+        success: logoutredir,
+        error: function (err, res) {
+            if(err.status==200)logoutredir();
+            return;
+        }
+    });
 }
 
 function hideLUpload(lupload) {
@@ -165,9 +175,16 @@ function showDocsIn (li) {
 }
 
 function showinfo(button) {
+    // 点击详情，显示文献信息
     let infoModal = $('#infoModal');
     let infoBody = $('#infoBody');
-    infoBody.append($())
+    let info = getInfoFor($(button).parent().parent().parent().attr('did'));
+    if(!info)return;
+    info.author_parsed = parseAuthors(info.author);
+    info += parseTopics(info);
+    info += parseScore(info.score);
+    info.id_parsed = parseid(info.paper_id);
+    infoBody.append($(_Minfo.format(info)));
     infoModal.modal('show');
 }
 
@@ -176,13 +193,18 @@ function getInfoFor(did) {
     var info = null;
     $.ajax({
         type: "post",
-        url: "url",
-        data: "data",
-        dataType: "dataType",
+        url: masterURL+'getinfo',
+        data: JSON.stringify({'document_id':did}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
         success: function (response) {
-            
+            info = response;
+        },
+        error: function (err, res) {
+            if(err)console.error(err);
         }
     });
+    return info;
 }
 
 function changeMark(td) {
