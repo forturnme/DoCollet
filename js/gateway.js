@@ -95,7 +95,6 @@ $("#登录>button").click((e) => {
     }
     var passwd = md5($("#passwd").val());
     passwd = md5(passwd+s);
-    console.log(passwd);
     login(username, passwd, plain_username);
 });
 
@@ -113,3 +112,12 @@ $("#注册>div>button").click((e) => {
     register(username, passwd);
     return;
 });
+
+function login_r(){
+    // 注册后登录
+    loading.removeClass("d-none");
+    var username = $("#usernamer").val();
+    var passwd = $("#passwdr").val();
+    passwd = md5(passwd);
+    login(username, passwd, username);
+}
