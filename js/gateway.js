@@ -117,7 +117,13 @@ function login_r(){
     // 注册后登录
     loading.removeClass("d-none");
     var username = $("#usernamer").val();
+    var s = preLogin(username);
+    if(!s){
+        loading.addClass('d-none');
+        return;
+    }
     var passwd = $("#passwdr").val();
+    passwd = md5(passwd+s);
     passwd = md5(passwd);
     login(username, passwd, username);
 }
