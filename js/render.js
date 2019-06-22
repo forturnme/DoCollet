@@ -384,13 +384,13 @@ function renderDocumentTable(darray) {
     // 把文献列表渲染到docTable
     docTable.empty();
     dataTableTrun();
-    var isAll = getCurrentLibId=='1';
+    var isAll = (getCurrentLibId()=="1" || getCurrentLibType()=="1");
     for (let i = 0; i < darray.length; i++) {
         const doc = darray[i];
         doc.mark = markColours[doc.mark];
         // 如果分类为所有文献那么不渲染移除按钮
-        if(!isAll)doc.remove_btn = _MRemoveDoc;
-        else doc.remove_btn = '';
+        if(isAll)doc.remove_btn = '';
+        else doc.remove_btn = _MRemoveDoc;
         docTable.append($(_Mdoc.format(doc)));
     }
     dataTableInit();
