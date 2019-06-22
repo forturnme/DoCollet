@@ -125,6 +125,104 @@ var _Mdoc = // 文章列表的DOM模板
     </div></td>\
 </tr>';
 
+var _Minfo = // 详细信息的模板
+'<h4 did="{document_id}">标题</h4>\
+<div class="waves-effect" onclick="editInfo(this)">{title}</div>\
+<input id="etitle" value="{title}" type="text" class="form-control" style="display: none">\
+<h4>作者</h4>\
+<div class="waves-effect" onclick="editInfo(this)">{author_parsed}<div>\
+<input id="eauthors" value="{author}" type="text" class="form-control" style="display: none">\
+<h4>年份</h4>\
+<div class="waves-effect" onclick="editInfo(this)">{year}</div>\
+<input id="eyear" onkeydown="return false;" max="9999" min="1" value="{year}" type="number" class="form-control" style="display: none">\
+<h4>主题</h4>\
+<div class="waves-effect" onclick="editInfo(this)">\
+  {topic_parsed}\
+</div>\
+<input id="ethemes" value="{topic_s}" type="text" class="form-control" style="display: none">\
+<h4>来源</h4>\
+<div class="waves-effect" onclick="editInfo(this)">{source}</div>\
+<input id="esource" value="{source}" type="text" class="form-control" style="display: none">\
+<h4>评分</h4>\
+<div class="waves-effect" onclick="editInfo(this)">\
+  {starstr}\
+</div>\
+<select id="escore" style="display: none">\
+  {starsel}\
+</select>\
+<h4>归档号</h4>\
+<div class="waves-effect" onclick="editInfo(this)">{id_parsed}</div>\
+<input id="eid" value="{paper_id}" type="text" class="form-control" style="display: none">\
+<h4>链接</h4>\
+<div><a href="http://www.12377.cn/">http://www.something.com/something?so=mething</a></div>';
+
+var _Mauthor_b = '<span class="badge badge-primary">{0}</span>'; // 作者打散显示
+
+var _Mtopic_b = '<span class="badge badge-info">{0}</span>'; // 题材打散
+
+// 实心星星，半星，空心星星
+var _Mstar_1 = '<i class="fas fa-star"></i>';
+var _Mstar_half = '<i class="fas fa-star-half-alt"></i>';
+var _Mstar_0 = '<i class="far fa-star"></i>';
+
+function parseAuthors (la) {
+    // 解析作者列表
+    var alist = '';
+    for(let i = 0;i < la.length; i++){
+        alist += _Mauthor_b.format(la[i]);
+    }
+    return alist;
+}
+
+function parseTopics (info) {
+    // 解析话题
+    let ti = info.topic_id;
+    let tn = info.topic_name
+    var formatted_tlist = '';
+    for (let i = 0; i < tn.length; i++) {
+        const t = tn[i];
+        formatted_tlist += _Mtopic_b.format(tn[i]);
+    }
+    return {
+        'topic_parsed':formatted_tlist,
+        'topic_s':tn.join(',')
+    };
+}
+
+function parseScore (score) {
+    // 图示化评分
+    var s = parseInt(score);
+    var starstr = '';
+    for (let f = 0; f < s/2; f++) {
+        starstr += _Mstar_1;
+    }
+    if(s%2==1)starstr += _Mstar_half;
+    for(let f = 0; f < 10-s/2*2; f++){
+        starstr += _Mstar_0;
+    }
+    var starsel = '';
+    for(let f = 0; f < 10; f++){
+        if(f==score-1){
+            starsel += '<option value="'+String(f+1)+'" selected="selected">'+String(f+1)+'</option>';
+        }else{
+            starsel += '<option value="'+String(f+1)+'">'+String(f+1)+'</option>';
+        }
+    }
+    return {
+        'starstr':starstr,
+        'starsel':starsel
+    };
+}
+
+function parseid (id) {
+    // 解析paperid
+    let idspl = id.split(':');
+    if(idspl[0]=='doi'){
+        return '<span class="badge badge-secondary">Doi</span>'+idspl[1];
+    }else{
+        return '<span class="badge badge-primary">arXiv</span>'+idspl[1];
+    }
+}
 
 // 调试用假数据
 var dumbLibs = {

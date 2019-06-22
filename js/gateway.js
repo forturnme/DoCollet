@@ -12,7 +12,7 @@ function preLogin(u) {
         async: false,
         url: masterURL+'login1',
         data: JSON.stringify({
-            'uname':u
+            'username':u
         }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -35,14 +35,14 @@ function preLogin(u) {
 
 function login(u, p, pu) {
     let sf = function () {
-        sessionStorage.setItem('uname', pu);
+        sessionStorage.setItem('username', pu);
         window.location.href='./index.html';
         return;
     };
     $.ajax({
         type: "post",
         url: masterURL+'login2',
-        data: JSON.stringify({'uname':u,'passwd':p}),
+        data: JSON.stringify({'username':u,'passwd':p}),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: sf,
@@ -64,7 +64,7 @@ function register(u, p) {
     $.ajax({
         type: "post",
         url: masterURL+'register',
-        data: JSON.stringify({'uname':u,'passwd':p}),
+        data: JSON.stringify({'username':u,'passwd':p}),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: sf,

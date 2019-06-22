@@ -4,6 +4,8 @@ let docList = $('#docs');
 let docTable = $('#docTable');
 let libListArea = $('#libList');
 
+var masterURL = 'http://39.108.137.227/';
+
 var dragImg = new Image(); 
 dragImg.src = './img/file.jpg'; 
 
@@ -164,8 +166,23 @@ function showDocsIn (li) {
 
 function showinfo(button) {
     let infoModal = $('#infoModal');
-    infoModal.attr('did', $(button).parent().parent().parent().attr('did'));
+    let infoBody = $('#infoBody');
+    infoBody.append($())
     infoModal.modal('show');
+}
+
+function getInfoFor(did) {
+    // 请求id为did的文献信息
+    var info = null;
+    $.ajax({
+        type: "post",
+        url: "url",
+        data: "data",
+        dataType: "dataType",
+        success: function (response) {
+            
+        }
+    });
 }
 
 function changeMark(td) {
