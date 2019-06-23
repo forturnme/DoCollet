@@ -1,5 +1,9 @@
 // 预加载函数
-$();
+function bgsize() {
+    $('body').css('background-size','100% '+$(window).height());
+}
+$(bgsize);
+window.onresize=bgsize;
 
 var masterURL = 'http://39.108.137.227/';
 

@@ -20,12 +20,23 @@
   <script src="http://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
 </head>
 
-<body style="background:url(./img/green-chameleon-21532-unsplash.jpg) no-repeat;
-background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; 
--o-background-size: cover;">
-  <div style="position:absolute;top:0;left:0;height: 100%;width:100%;background-color: rgba(0,0,0,0.4)"></div>
+<style>
+@media all and (orientation:landscape){
+  body{
+    background:url('./img/bg.jpg') no-repeat;
+  }
+}
+@media all and (orientation:portrait){
+  body{
+    background:url('./img/bg-slim.jpg') no-repeat;
+  }
+}
+</style>
+
+<body>
+  <div style="position:absolute;top:0;left:0;height: 100%;width:100%;background-color: rgba(0,0,0,0.5);"></div>
   <div style="position: fixed;right: 0;bottom: 0;color: rgb(161, 161, 161);">Photo by Green Chameleon on Unsplash</div>
-  <div style="height: 360px;width: 448px;background-color: white;border: none;padding: 40px;margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
+  <div style="height: 400px;width: 400px;background-color: white;border: none;padding: 40px;margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
     <ul class="nav nav-tabs fluent-tabs" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="登录-tab" data-toggle="tab" href="#登录" role="tab" aria-controls="登录" aria-selected="true">登录</a>
