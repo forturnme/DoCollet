@@ -249,6 +249,7 @@ function post_updateInfo(info){
     // 更新信息
     var suc = ()=>{
         $('#infoModal').modal('hide');
+        $('#docTable').children('tr[did="'+info.document_id+'"]').children('td[draggable="true"]').html(info.title);
         promptSuccess('信息已更新');
     }
     $.ajax({

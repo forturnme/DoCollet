@@ -138,6 +138,7 @@ function updateInfo(btn){
     var source = $('#esource').val();
     var score = $('#escore').val();
     var id = $('#eid').val();
+    var link = $('#elink').attr('href');
     post_updateInfo({
         'document_id':document_id, 
         'title':title,
@@ -145,7 +146,8 @@ function updateInfo(btn){
         'year':year,
         'source':source,
         'score':score,
-        'paper_id':id
+        'paper_id':id,
+        'link':link
     });
 }
 

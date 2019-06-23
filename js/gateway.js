@@ -1,5 +1,9 @@
 // 预加载函数
-$();
+function bgsize() {
+    $('body').css('background-size','100% '+$(window).height());
+}
+$(bgsize);
+window.onresize=bgsize;
 
 var masterURL = 'http://39.108.137.227/';
 
@@ -84,7 +88,6 @@ function register(u, p) {
 }
 
 $("#登录>button").click((e) => {
-    console.log('login clicked');
     loading.removeClass("d-none");
     var username = $("#username").val();
     var plain_username = username;
