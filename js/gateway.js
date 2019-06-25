@@ -90,27 +90,39 @@ function register(u, p) {
     });
 }
 
+function redInput (input) {
+    // 短暂标红输入框提示用户其为空
+    input.css('border', '1px solid red');
+    window.setTimeout(()=>input.css('border','1px solid #a9a9a9'), 1000);
+}
+
 $("#登录>button").click((e) => {
     // 处理登录
-    loading.removeClass("d-none");
     var username = $("#username").val();
     var plain_username = username;
+    var passwd = $("#passwd").val();
     // username = md5(username);
+    if(username == '')redInput($('#username'));
+    if(passwd == '')redInput($('#passwd'));
+    if(username == '' || passwd == '')return;
+    loading.removeClass("d-none");
     var s = preLogin(username);
     if(!s){
         loading.addClass('d-none');
         return;
     }
-    var passwd = md5($("#passwd").val());
-    passwd = md5(passwd+s);
+    passwd = md5(md5(passwd)+s);
     login(username, passwd, plain_username);
 });
 
 $("#regis").click((e) => {
     // 处理注册
-    loading.removeClass("d-none");
     var username = $("#usernamer").val();
     var passwd = $("#passwdr").val();
+    if(username == '')redInput($('#usernamer'));
+    if(passwd == '')redInput($('#passwdr'));
+    if(username == '' || passwd == '')return;
+    loading.removeClass("d-none");
     if(passwd.length < 9 || /[^0123456789]/.test(passwd)==false){
         loading.addClass("d-none");
         $('#badenter').modal('show');
