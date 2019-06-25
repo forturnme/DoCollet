@@ -1,1 +1,2 @@
-var pdfFileUrl = 'http://39.108.137.227/getdoc/'+sessionStorage.getItem('did');
+// 从sessionStorage里面获得文献id，组装网址
+var pdfFileUrl = './getdoc/'+sessionStorage.getItem('did');

@@ -5,11 +5,12 @@ function bgsize() {
 $(bgsize);
 window.onresize=bgsize;
 
-var masterURL = 'http://39.108.137.227/';
+var masterURL = './';
 
 let loading = $("#loading");
 
 function preLogin(u) {
+    // 验证用户名，获取盐
     var ret;
     $.ajax({
         type: "post",
@@ -38,6 +39,7 @@ function preLogin(u) {
 }
 
 function login(u, p, pu) {
+    // 向服务器传送加密的用户名和密码来登录，登录成功后重定向至主页
     let sf = function () {
         sessionStorage.setItem('username', pu);
         window.location.href='./index.html';
@@ -60,6 +62,7 @@ function login(u, p, pu) {
 }
 
 function register(u, p) {
+    // 使用用户名和散列的密码注册
     let sf = function () {
         loading.addClass('d-none');
         $('#registerokmod').modal('show');
@@ -88,6 +91,7 @@ function register(u, p) {
 }
 
 $("#登录>button").click((e) => {
+    // 处理登录
     loading.removeClass("d-none");
     var username = $("#username").val();
     var plain_username = username;
@@ -103,6 +107,7 @@ $("#登录>button").click((e) => {
 });
 
 $("#regis").click((e) => {
+    // 处理注册
     loading.removeClass("d-none");
     var username = $("#usernamer").val();
     var passwd = $("#passwdr").val();
@@ -118,7 +123,7 @@ $("#regis").click((e) => {
 });
 
 function login_r(){
-    // 注册后登录
+    // 注册后直接登录
     loading.removeClass("d-none");
     var username = $("#usernamer").val();
     var s = preLogin(username);

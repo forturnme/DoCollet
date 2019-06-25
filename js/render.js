@@ -4,17 +4,11 @@ let docList = $('#docs');
 let docTable = $('#docTable');
 let libListArea = $('#libList');
 
-// 本地测试用
-var masterURL = 'http://39.108.137.227/';
+// 指定主URL
+var masterURL = './';
 
 var dragImg = new Image(); 
-dragImg.src = './img/file.jpg'; 
-
-$(()=>{
-    // 在线用户，替换'鸡你太美'
-    var un = sessionStorage.getItem('username');
-    if(un) $('#userName').html(un);
-});
+dragImg.src = './img/file.jpg';
 
 function getCurrentLibId() {
     // 获取现在的libid
@@ -47,39 +41,6 @@ function getDocsIn(lid, ltype) {
     renderDocumentTable(docs);
 }
 
-+ function($) {
-    // 拖放文件上传
-    'use strict';
-
-    var dropZone = document.getElementById('drop-zone');
-
-    var startUpload = function(files) {
-        var upload = new FormData();
-        upload.append('data',files[0]);
-        postFile(upload);
-        $('#lupload').hide();
-        $('#ltable').show();
-    }
-
-    dropZone.ondrop = function(e) {
-        e.preventDefault();
-        this.className = 'upload-drop-zone';
-
-        startUpload(e.dataTransfer.files)
-    }
-
-    dropZone.ondragover = function() {
-        this.className = 'upload-drop-zone drop';
-        return false;
-    }
-
-    dropZone.ondragleave = function() {
-        this.className = 'upload-drop-zone';
-        return false;
-    }
-
-}(jQuery);
-
 function border(div) {
     // 鼠标移到色标上时描绘边框
     $(div).css({'border':'2px solid gray'});
@@ -97,6 +58,12 @@ function showLUpload(ltable, event) {
     lupload.attr('lid', $(ltable).attr('lid'));
     $(ltable).hide();
     lupload.show();
+}
+
+function hideLUpload(lupload) {
+    // 文件没拖入时隐藏上传显示列表
+    $(lupload).hide();
+    $('#ltable').show();
 }
 
 function showinfo(button) {
@@ -151,12 +118,6 @@ function updateInfo(btn){
     });
 }
 
-function hideLUpload(lupload) {
-    // 文件没拖入时隐藏上传显示列表
-    $(lupload).hide();
-    $('#ltable').show();
-}
-
 function networkWarn () {
     // 显示一个网络错误的对话框
     $('#neterrModal').modal('show');
@@ -173,10 +134,12 @@ function promptSuccess(prompt) {
 }
 
 function tooltipInit () {
+    // 初始化弹出式提示
     $('[data-toggle="tooltip"]').tooltip()
 }
 
 function maintaince () {
+    // 维护窗口元素尺寸
     let mheight = mainDiv.innerHeight();
     libList.height(mheight);
     docList.height(mheight);
@@ -184,35 +147,16 @@ function maintaince () {
     tooltipInit();
 }
 
-$(()=>{$('#lupload').hide();});
-
-$(maintaince);
-
-$(window).resize(maintaince);
-
-$(function () {
-    $('#dtDynamicVerticalScrollExample').DataTable(dttLocale);
-    $('.dataTables_length').addClass('bs-select');
-});
-
-$(function(){
-    // renderLibTable(dumbLibs.libs);
-    // renderDocumentTable(dumbDocs.docs);
-    updateLibs();
-    libListArea.children('li[lid="1"]').addClass('active');
-    getDocsIn('1', '1');
-});
-
 function dataTableTrun () {
     // 清空datatable
-    let dtt = $('#dtDynamicVerticalScrollExample').dataTable();
+    let dtt = $('#slideableTable').dataTable();
     dtt.fnClearTable();
     dtt.fnDestroy();
 }
 
 function dataTableInit () {
     // 重新渲染datatable
-    $('#dtDynamicVerticalScrollExample').dataTable(dttLocale);
+    $('#slideableTable').dataTable(dttLocale);
     $('.dataTables_length').addClass('bs-select');
 }
 
@@ -243,13 +187,14 @@ function showDocsIn (li) {
 }
 
 function changeMark(td) {
+    // 显示改变颜色标记的对话框
     let markModal = $('#markModal');
     markModal.attr('did', $(td).parent().attr('did'));
     markModal.modal('show');
 }
 
 function changeMarkTo (m) {
-    // 改变分类为m
+    // 改变颜色标记为m
     let did = $('#markModal').attr('did');
     post_changeMark(did, m);
 }
@@ -264,13 +209,13 @@ function delLib (btn) {
 }
 
 function delLibConfirmed (btn) {
-    let lid = $(btn).parent().parent().parent().parent().attr('lid');
     // 实际操作删除分类
+    let lid = $(btn).parent().parent().parent().parent().attr('lid');
     post_delLib(lid);
 }
 
 function dragDoc(tr, event) {
-    // 开始拖动文献
+    // 开始拖动文献，更改对应条目的颜色，设置拖动图片
     event.dataTransfer.setData('Text',$(event.target).parent().attr('did'));
     event.dataTransfer.effectAllowed = 'copy';
     event.dataTransfer.setDragImage(dragImg, 64, 64);
@@ -278,15 +223,18 @@ function dragDoc(tr, event) {
 }
 
 function dragDocOk (event) {
+    // 文献拖动完毕，颜色变回
     event.target.style.backgroundColor = '';
 }
 
 function allowDrop(li, event) {
+    // 文献拖入时改变边框颜色，表示此分类可以放置文献
     $(li).css('border','2px solid');
     event.preventDefault();
 }
 
 function docOut (li) {
+    // 文献拖动时离开有效分类
     $(li).css('border', '1px solid rgba(0,0,0,.125)');
 }
 
@@ -345,6 +293,7 @@ function delDocConfirmed(btn) {
     $('#infoModal').modal('hide');
 }
 
+// 渲染器
 function renderLibTable(larray) {
     // 把列表larray渲染到分类目录
     libListArea.empty(); // 先清空dom
@@ -387,3 +336,65 @@ function renderDocumentTable(darray) {
     dataTableInit();
     tooltipInit();
 }
+
+// 以下注册初始化时需要使用的函数
+$(()=>{
+    // 在线用户，替换'鸡你太美'
+    var un = sessionStorage.getItem('username');
+    if(un) $('#userName').html(un);
+});
+
++ function($) {
+    // 拖放文件上传的实现
+    'use strict';
+
+    var dropZone = document.getElementById('drop-zone');
+
+    var startUpload = function(files) {
+        var upload = new FormData();
+        upload.append('data',files[0]);
+        postFile(upload);
+        $('#lupload').hide();
+        $('#ltable').show();
+    }
+
+    dropZone.ondrop = function(e) {
+        e.preventDefault();
+        this.className = 'upload-drop-zone';
+
+        startUpload(e.dataTransfer.files)
+    }
+
+    dropZone.ondragover = function() {
+        this.className = 'upload-drop-zone drop';
+        return false;
+    }
+
+    dropZone.ondragleave = function() {
+        this.className = 'upload-drop-zone';
+        return false;
+    }
+
+}(jQuery);
+
+// 默认隐藏上传区域
+$(()=>{$('#lupload').hide();});
+
+// 加载完成时以及窗口改变尺寸时重新调整界面尺寸
+$(maintaince);
+$(window).resize(maintaince);
+
+// 初始化表单区域
+$(function () {
+    $('#slideableTable').DataTable(dttLocale);
+    $('.dataTables_length').addClass('bs-select');
+});
+
+// 默认为用户打开“所有文献”分类
+$(function(){
+    // renderLibTable(dumbLibs.libs);
+    // renderDocumentTable(dumbDocs.docs);
+    updateLibs();
+    libListArea.children('li[lid="1"]').addClass('active');
+    getDocsIn('1', '1');
+});

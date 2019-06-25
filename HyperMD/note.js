@@ -1,6 +1,7 @@
-var masterURL = 'http://39.108.137.227/';
+var masterURL = './';
 var did = '';
 $(()=>{
+    // 页面加载完成后，获得笔记
     did = sessionStorage.getItem('did');
     $.ajax({
         type: "post",
@@ -39,7 +40,6 @@ function save(){
 }
 
 function renderNote(note) {
-    // 渲染note
-    // note.replace(/\\n/g, '\n');
+    // 渲染笔记到md编辑器
     editor.setValue(note);
 }

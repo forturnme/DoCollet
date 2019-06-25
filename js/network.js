@@ -1,5 +1,5 @@
 function logout () {
-    // 登出
+    // 登出并重定向至登录页面
     let logoutredir = function () {
         console.log('bye');
         window.location.href = './gateway.html';
@@ -17,7 +17,7 @@ function logout () {
 }
 
 function post_getLib () {
-    // 获得文献列表
+    // 获得文献列表并返回
     var libs = null;
     $.ajax({
         async: false,
@@ -35,7 +35,7 @@ function post_getLib () {
 }
 
 function postFile (upload) {
-    // 投递文献
+    // 投递文献并添加其至现在的分类，添加后更新分类列表与文献列表
     $('#uploadingModal').modal('show');
     var suc = (res)=>{
         promptSuccess('文献上传成功')();
@@ -75,7 +75,7 @@ function postFile (upload) {
 }
 
 function getInfoFor(did) {
-    // 请求id为did的文献信息
+    // 请求id为did的文献信息，并返回
     var info = null;
     $.ajax({
         type: "post",
@@ -98,7 +98,7 @@ function getInfoFor(did) {
 }
 
 function post_addToReadLater(did) {
-    // 将did加到待读列表
+    // 将did加到待读列表，更新分类列表
     var suc = ()=>{
         promptSuccess('已加入待读列表')();
         updateLibs();
@@ -118,7 +118,7 @@ function post_addToReadLater(did) {
 }
 
 function post_addDocToLib (did, lid, func) {
-    // 将文章did加入lid
+    // 将文章did加入lid，加入后显示提示，更新分类列表
     var suc = ()=>{
         promptSuccess('文献已加入分类')();
         updateLibs();
@@ -139,7 +139,7 @@ function post_addDocToLib (did, lid, func) {
 }
 
 function post_getDoc(lid, ltype) {
-    // 获得lid中的文献列表
+    // 获得lid中的文献列表并返回
     var docs = null;
     $.ajax({
         type: "post",
@@ -160,7 +160,7 @@ function post_getDoc(lid, ltype) {
 }
 
 function post_remDocFromLib(did, lid){
-    // 从分类中移除一个文献
+    // 从分类中移除一个文献，移除之后更新分类列表与文献列表
     let suc = ()=>{
         promptSuccess('文献已从分类中移除')();
         var lt = getCurrentLibType();
@@ -182,7 +182,7 @@ function post_remDocFromLib(did, lid){
 }
 
 function post_removeDoc(did) {
-    // 永久删除文献
+    // 永久删除文献，删除后发出提示并更新分类列表
     var suc = ()=>{
         var lid = getCurrentLibId();
         var lt  = getCurrentLibType();
@@ -205,7 +205,7 @@ function post_removeDoc(did) {
 }
 
 function post_createLib(libname){
-    // 创建新分类
+    // 创建新分类，完成后更新分类列表
     var suc = ()=>{
         $('#newLibModal').modal('hide');
         updateLibs();
@@ -226,7 +226,7 @@ function post_createLib(libname){
 }
 
 function post_delLib(lid){
-    // 删除分类
+    // 删除分类，删除后更新分类列表
     var suc = ()=>{
         $('#warnDelLibModal').modal('hide');
         updateLibs();
@@ -246,7 +246,7 @@ function post_delLib(lid){
 }
 
 function post_updateInfo(info){
-    // 更新信息
+    // 更新信息，更新后关闭详细信息对话框且改变文献标题
     var suc = ()=>{
         $('#infoModal').modal('hide');
         $('#docTable').children('tr[did="'+info.document_id+'"]').children('td[draggable="true"]').html(info.title);
@@ -267,10 +267,11 @@ function post_updateInfo(info){
 }
 
 function post_changeMark(did, m) {
-    // 改变色标
+    // 改变色标，改变后更新对应文献的颜色标记
     var suc = ()=>{
         $('#markModal').modal('hide');
-        getDocsIn(getCurrentLibId(), getCurrentLibType());
+        $('#docTable>tr[did="'+did+'"]>td[onclick="changeMark(this);"]>div').css('background-color',markColours[m]);
+        // getDocsIn(getCurrentLibId(), getCurrentLibType());
     }
     $.ajax({
         type: "post",

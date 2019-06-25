@@ -22,7 +22,7 @@ String.prototype.format = function(args) {
     return result;
 }
 
-var markColours = // 数字与颜色的对应关系
+var markColours = // 数字与颜色标记的对应关系
 {
     '0':'lightgray',
     '1':'red',
@@ -161,7 +161,7 @@ var _Minfo = // 详细信息的模板
 
 var _Mauthor_b = '<span class="badge badge-primary m-1">{0}</span>'; // 作者打散显示
 
-var _Mtopic_b = '<span class="badge badge-info m-1">{0}</span>'; // 题材打散
+var _Mtopic_b = '<span class="badge badge-info m-1">{0}</span>'; // 题材打散显示
 
 // 实心星星，半星，空心星星
 var _Mstar_1 = '<i class="fas fa-star"></i>';
