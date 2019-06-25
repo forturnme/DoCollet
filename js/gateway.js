@@ -116,7 +116,7 @@ $("#登录>button").click((e) => {
 });
 
 $("#regis").click((e) => {
-    // 处理注册
+    // 处理注册s
     var username = $("#usernamer").val();
     var passwd = $("#passwdr").val();
     if(username == '')redInput($('#usernamer'));
