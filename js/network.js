@@ -44,9 +44,9 @@ function postFile (upload) {
         var lid = getCurrentLibId();
         window.setTimeout(function()
             {
+                $('#uploadingModal').modal('hide');
                 if(ltype=='1'){
                     getDocsIn(lid, ltype);
-                    $('#uploadingModal').modal('hide');
                     return;
                 }
                 post_addDocToLib(res.id, lid, ()=>{
@@ -166,6 +166,8 @@ function post_remDocFromLib(did, lid){
         var lt = getCurrentLibType();
         getDocsIn(lid, lt);
         updateLibs();
+        $('.tooltip').remove();
+        tooltipInit();
     }
     $.ajax({
         type: "post",
@@ -250,7 +252,7 @@ function post_updateInfo(info){
     var suc = ()=>{
         $('#infoModal').modal('hide');
         $('#docTable').children('tr[did="'+info.document_id+'"]').children('td[draggable="true"]').html(info.title);
-        promptSuccess('信息已更新');
+        promptSuccess('信息已更新')();
     }
     $.ajax({
         type: "post",

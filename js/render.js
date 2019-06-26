@@ -105,7 +105,7 @@ function updateInfo(btn){
     var source = $('#esource').val();
     var score = $('#escore').val();
     var id = $('#eid').val();
-    var link = $('#elink').attr('href');
+    var link = $('#elink').html();
     post_updateInfo({
         'document_id':document_id, 
         'title':title,
@@ -114,7 +114,7 @@ function updateInfo(btn){
         'source':source,
         'score':score,
         'paper_id':id,
-        'link':link
+        'link_url':link
     });
 }
 
@@ -126,7 +126,6 @@ function networkWarn () {
 function promptSuccess(prompt) {
     // 返回一个提示操作已经成功的函数，提示词prompt
     return ()=>{
-        console.log('ok')
         $('#successBan').html(prompt);
         $('#successBan').slideDown();
         setTimeout(()=>$('#successBan').slideUp(), 1000);
