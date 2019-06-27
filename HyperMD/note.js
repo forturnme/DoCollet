@@ -1,4 +1,4 @@
-var masterURL = './';
+var masterURL = './../';
 var did = '';
 $(()=>{
     // 页面加载完成后，获得笔记
